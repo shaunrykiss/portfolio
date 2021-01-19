@@ -1,0 +1,134 @@
+.portfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+  padding-top: 84px;
+  
+  background: $black;
+
+  &__carousel {
+    position: relative;
+    
+    width: 90%;
+    margin: 0 auto 134px auto;
+
+    @include media-xl {
+      width: 100%;
+    }
+  }
+
+  &__trigger-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    background: transparent;
+    border: none;
+
+    font-size: 3rem;
+    font-weight: 200;
+    color: $white;
+
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+
+    .fa-play {
+      color: $accent;
+      font-size: 3.5rem;
+
+      transform: scale(1);
+      transition: 0.3s ease-in-out;
+    }
+
+    span {
+      color: $white;
+      text-shadow: 0 0 8px rgba(0,0,0,1);
+    }
+
+    &:hover {
+      .fa-play {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .slick-track {
+    display: flex;
+  }
+
+  .slick-track .slick-slide {
+    display: flex;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slick-arrow {
+    display: none !important;
+  }
+
+  .slick-prev,
+  .slick-next {
+    color: $white;
+    font-size: 3.8rem;
+    opacity: 0.7;
+
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      opacity: 1;
+      color: $accent;
+    }
+  }
+
+  .slick-prev {
+    left: -80px;
+  }
+
+  .slick-next {
+    right: -80px;
+  }
+
+  &__title {    
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+
+    transform: translateX(-50%);
+    
+    margin-top: 40px;
+    
+    h1,
+    h2 {
+      text-transform: uppercase;
+      font-weight: 200;
+      text-align: center;
+    }
+    
+    h1 {
+      color: $white;
+      font-size: 3.8rem;
+      line-height: 0.7;
+    }
+
+    h2 {
+      color: $accent;
+      font-size: 3.2rem;
+    }
+  }
+
+  &.portfolio-active {
+    .slick-arrow {
+      display: block !important;
+    }
+  }
+}

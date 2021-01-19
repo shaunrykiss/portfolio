@@ -1,19 +1,42 @@
 import React from 'react';
-import { useStaticQuery, graphql, Link } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 
-export default function Layout({ children }) {
-  const data = useStaticQuery(
+import Header from './sections/header';
+import Footer from './sections/footer';
+import Maintenance from './sections/maintenance';
+
+const SiteContent = ({children, socialLinks}) => (
+  <React.Fragment>
+    <Header></Header>
+    { children }
+    <Footer socialLinks={socialLinks}></Footer>
+  </React.Fragment>
+);
+
+
+export default function Layout({ children, socialLinks }) {
+  const siteData = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
+     
             title
+          }
+        }
+        allContentfulSiteUnderMaintenanceToggle {
+          edges {
+            node {
+              siteIsUnderMaintenance
+            }
           }
         }
       }
     `
   );
+
+  const siteUnderMaintenance = siteData.allContentfulSiteUnderMaintenanceToggle.edges[0].node.siteIsUnderMaintenance;
 
   return (
     <div className="app-container">
@@ -21,31 +44,14 @@ export default function Layout({ children }) {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>{data.site.siteMetadata.title}</title>
+        <title>{siteData.site.siteMetadata.title}</title>
       </Helmet>
 
-      <header>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about/">About</Link>
-            </li>
-            <li>
-              <Link to="/work/">Work</Link>
-            </li>
-            <li>
-              <Link href="/contact/">Contact</Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
-
-      {children}
-
-      <footer>Property of Shaun</footer>
+      {siteUnderMaintenance ?
+        <Maintenance/>
+        :
+        <SiteContent children={children} socialLinks={socialLinks} />
+      }
     </div>
   )
 }

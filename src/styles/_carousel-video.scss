@@ -1,0 +1,109 @@
+.carousel-video {
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    .play-toggle,
+    .mute-toggle {
+      opacity: 1;
+    }
+
+    .carousel-video__info {
+      bottom: 0;
+      opacity: 1;
+    }
+  }
+
+  &__controls {
+    z-index: 20;
+  }
+
+  .play-toggle,
+  .mute-toggle,
+  &__info {
+    position: absolute;
+  }
+
+  .play-toggle,
+  .mute-toggle {
+    opacity: 0;
+
+    background: none;
+    border: none;
+
+    color: $white;
+
+    transition: all 0.3s ease-in-out;
+
+    svg {
+      filter: drop-shadow(0px 0px 8px rgba(0,0,0,0.6));   
+    }
+
+    &:hover {
+      color: $accent;
+    }
+  }
+
+  .play-toggle {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 4rem;
+  }
+
+  .mute-toggle {
+    bottom: 10px;
+    right: 8px;
+    z-index: 30;
+
+    font-size: 2rem;
+  }
+
+  &__info {
+    bottom: -50%;
+    left: 0;
+    right: 0;
+
+    opacity: 0;
+
+    padding: 40px 10px 10px 10px;
+
+    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.4) 49%, transparent 100%);
+
+    font-family: $secondaryFont;
+    color: $white;
+
+    transition: all 0.4s ease-in-out;
+
+    .title {
+      font-size: 2.4rem;
+      font-weight: 600;
+    }
+
+    .description {
+      font-weight: 300;
+      margin-top: 2px;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 10;
+
+    background: rgba(0,0,0,0.6);
+    opacity: 1;
+
+    transition: all 0.3s ease-in-out;
+
+    &.active {
+      opacity: 0;
+      z-index: -1;
+    }
+  }
+}

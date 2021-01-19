@@ -17,7 +17,21 @@ module.exports = {
         accessToken: `2yh9oybjs66UpOgClcnce9ZLCCgQZiEeVR8d1egECNc`,
       },
     },
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        google: {
+          families: [
+            "Montserrat:700,800,300,500",
+            "Oswald:200,300,400,500",
+            "Raleway:200,300,500,600",
+          ],
+        },
+      },
+    },
     `gatsby-plugin-sass`,
-    `gatsby-plugin-react-helmet`
+    `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
   ],
 }

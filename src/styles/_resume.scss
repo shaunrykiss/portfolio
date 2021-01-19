@@ -1,0 +1,157 @@
+.resume {
+  @include media-sm{
+    padding-bottom: 50px;
+  }
+
+  .parallax-heading {
+    &::before {
+      content: 'RESUME';
+    }
+  }
+
+  .section-content,
+  .wrapper {
+    background: inherit;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__download-link {
+    margin-bottom: 40px;
+    
+    font-size: 3.4rem;
+    color: $accentLight;
+  }
+
+  &__categories {
+    display: flex;
+    margin-bottom: 40px;
+    
+    overflow-x: scroll;
+
+    @include media-lg {
+      justify-content: center;
+
+      overflow-x: auto;
+    }
+  }
+
+  &__category-tab {
+    position: relative;
+    
+    margin: 0 20px;
+    padding: 10px;
+
+    font-family: $accentFont;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+
+    border: none;
+    background: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 3px;
+
+      width: 100%;
+      height: 1px;
+      
+      background: $black;
+
+      transform: scaleX(0);
+
+      transition: transform 0.4s ease-in-out;
+    }
+
+    &.active-tab {
+      &::before {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &__container {
+    position: relative;
+    background: inherit;
+  }
+
+  &__slide {
+    position: absolute;
+    opacity: 0;
+
+    width: 100%;
+
+    padding: 24px;
+
+    box-shadow: 0 10px 20px rgba($black, 0.25);
+
+    backdrop-filter: blur(12px);
+
+    transition: opacity 0.3s ease-in;
+
+    &-wrapper {
+      opacity: 0;
+      transform: scale(0.98);
+
+      transition: all 0.4s ease-in;
+    }
+
+    &.active {
+      opacity: 1;
+
+      .resume__slide-wrapper {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    h3 {
+      position: relative;
+      display: inline-block;
+
+      margin-bottom: 22px;
+      
+      font-size: 2.4rem;
+      font-weight: 400;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 1px;
+
+        width: 100%;
+        height: 1px;
+        background: $black;
+      }
+    }
+  }
+
+  &__container {
+    display: grid;
+    row-gap: 10px;
+
+    margin: 0 auto;
+
+    @include media-lg {
+      width: 75%;
+    }
+
+    @include media-xl {
+      width: 65%;
+    }
+
+    @include media-xxl {
+      width: 45%;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+.about {
+  padding: 50px 0;
+
+  .parallax-heading {
+    &::before {
+      content: 'ABOUT';
+    }
+  }
+
+  h2 {
+    font-weight: 300;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 80%;
+    margin: 0 auto;
+
+    p {
+      font-size: 1.8rem;
+      letter-spacing: 0.4px;
+    }
+  }
+
+  &__bio {
+    width: 70%;
+    margin-right: 35px;
+
+    white-space: pre-wrap;
+  }
+
+  &__headshot {
+    width: 23%;
+
+    img {
+      border-radius: 12px;
+      height: 200px;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+
+// Media Queries
+
+@mixin media-xxl {
+  @media (min-width: 2500px) {
+    @content;
+  }
+}
+
+@mixin media-xl {
+  @media (min-width: 1800px) {
+    @content;
+  }
+}
+
+@mixin media-lg {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin media-md {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin media-sm {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin media-xs {
+  @media (min-width: 340px) {
+    @content;
+  }
+}
+
+@mixin media-height-sm {
+  @media (max-height: 400px) {
+    @content;
+  }
+}

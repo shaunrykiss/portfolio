@@ -1,0 +1,9 @@
+.logo {
+  font-size: 4rem;
+  font-weight: 300;
+  color: $white;
+
+  &__accent {
+    color: $accent;
+  }
+}

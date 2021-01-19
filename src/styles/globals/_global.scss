@@ -1,0 +1,98 @@
+
+html {
+  font-size: 62.5%;
+  font-family: $mainFont;
+  font-weight: 200;
+  color: $black;
+}
+
+body {
+  .slick-prev::before,
+  .slick-next::before {
+    display: none;
+  }
+}
+
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3 {
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+}
+
+h1,
+h2 {
+  font-size: 4.2rem;
+}
+
+h1 {
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 3.4rem;
+}
+
+p,
+li,
+a,
+h4 {
+  font-size: 1.6rem; 
+  font-weight: 300;
+  letter-spacing: 0.3px;
+}
+
+.wrapper {
+  width: 90%;
+  max-width: 1170px;
+  margin: 0 auto;
+
+  @include media-xl {
+    max-width: 1600px;
+  }
+}
+
+.wrapper-big {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.section-content {
+  padding: 40px 0 70px 0;
+  
+  opacity: 0;
+  transform: translateY(30px);
+
+  transition: all 0.5s ease-in-out;
+
+  &--fade-in {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.section-heading,
+.section-subheading {
+  line-height: 1.1;
+  text-align: center;
+}
+
+.section-subheading {
+  margin-bottom: 70px;
+}
+
+.parallax-heading {
+  font-family: $accentFont;
+  font-size: 370px;
+  font-weight: 700;
+  color: $accentFaded;
+}
+
+.slick-slide:first-child {
+  z-index: 10;
+}

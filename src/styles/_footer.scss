@@ -1,0 +1,33 @@
+
+.footer {
+  padding: 14px 0;
+
+  background: $black;
+  color: $white;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__social {
+    display: none;
+    align-items: center;
+
+    @include media-md {
+      display: flex;
+    }
+  }
+
+  &__social-trigger {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: $white;
+  }
+
+  a {
+    font-size: 2rem;
+  }
+}
