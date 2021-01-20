@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faPause, faVolumeUp, faVolumeMute } from "@fortawesome/free-solid-svg-icons";
+import { faPlay, faPause, faVolumeUp, faVolumeMute, faExpand } from "@fortawesome/free-solid-svg-icons";
 
 const CarouselVideo = props => {
   const video = useRef("");
@@ -41,6 +41,10 @@ const CarouselVideo = props => {
     toggleVideoIsMuted(!videoIsMuted)
   }
 
+  const toggleFullScreenStatus = () => {
+    video.current.requestFullscreen();
+  }
+
   const videoEnded = () => {
     props.handleVideoEnd(props.lastSlide);
   }
@@ -49,7 +53,7 @@ const CarouselVideo = props => {
     <div className="carousel-video">
       <video width="100%" ref={video} muted={videoIsMuted} onEnded={videoEnded}>
         <source src={props.video.videoUrl} type="video/mp4" />
-        <track kind="captions"/>
+        <track kind="captions" />
       </video>
 
       {props.portfolioTriggered && (
@@ -58,12 +62,26 @@ const CarouselVideo = props => {
             <FontAwesomeIcon
               icon={videoIsPlaying ? faPause : faPlay}
             ></FontAwesomeIcon>
+            <span className="sr-only">
+              {videoIsPlaying ? "Pause Video" : "Play Video"}
+            </span>
           </button>
 
           <button className="mute-toggle" onClick={toggleMuteStatus}>
             <FontAwesomeIcon
               icon={videoIsMuted ? faVolumeUp : faVolumeMute}
             ></FontAwesomeIcon>
+            <span className="sr-only">
+              {videoIsMuted ? "Unmute Video" : "Mute Video"}
+            </span>
+          </button>
+
+          <button
+            className="fullscreen-toggle"
+            onClick={toggleFullScreenStatus}
+          >
+            <FontAwesomeIcon icon={faExpand}></FontAwesomeIcon>
+            <span className="sr-only">Enter Full Screen View</span>
           </button>
 
           <div className="carousel-video__info">

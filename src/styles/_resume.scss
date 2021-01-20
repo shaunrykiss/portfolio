@@ -1,8 +1,8 @@
 .resume {
-  @include media-sm{
-    padding-bottom: 50px;
+  @include media-sm {
+    padding-top: 40px;
   }
-
+  
   .parallax-heading {
     &::before {
       content: 'RESUME';
@@ -27,9 +27,42 @@
     color: $accentLight;
   }
 
+  &__categories-container {
+    position: relative;
+    padding-right: 30px;
+
+    &::before {
+      content: '>';
+
+      position: absolute;
+      top: 13px;
+      right: 0;
+      transform: translateY(-50%);
+      z-index: 10;
+
+      padding: 0 3px 0 20px;
+
+      font-size: 3rem;
+      font-weight: 200;
+    }
+
+    @include media-lg {
+      padding-right: 0;
+
+      &:before {
+        display: none;
+      }
+    }
+  }
+
   &__categories {
     display: flex;
     margin-bottom: 40px;
+
+    width: 100%;
+
+    margin-bottom: 15px;
+    padding-bottom: 15px;
     
     overflow-x: scroll;
 
@@ -44,7 +77,7 @@
     position: relative;
     
     margin: 0 20px;
-    padding: 10px;
+    padding: 10px 0;
 
     font-family: $accentFont;
     font-weight: 700;
@@ -55,6 +88,10 @@
 
     border: none;
     background: none;
+
+    @include media-md {
+      padding: 10px;
+    }
 
     &::before {
       content: '';

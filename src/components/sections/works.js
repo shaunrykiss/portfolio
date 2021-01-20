@@ -65,6 +65,7 @@ const Works = props => {
         <Controller>
           <Scene
             offset="-250"
+            triggerHook="onCenter"
             classToggle="section-content--fade-in"
             triggerElement=".works .section-content"
             reverse="true"
@@ -85,7 +86,7 @@ const Works = props => {
                       All
                     </button>
                   </li>
-  
+
                   {worksCategories.map((category, i) => (
                     <li key={i}>
                       <button
@@ -109,7 +110,7 @@ const Works = props => {
                     href="/"
                     data-category={slugify(item.category)}
                     key={i}
-                    onClick={(e) => handleItemClick(e, item)}
+                    onClick={e => handleItemClick(e, item)}
                   >
                     <Img fluid={item.image.fluid}></Img>
                     <div className="works__item-overlay">

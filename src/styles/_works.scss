@@ -1,8 +1,12 @@
 .works {
-  padding: 50px 0 0 0;
+  padding: 20px 0 0 0;
   
   background: $black;
   color: $white;
+
+  @include media-sm {
+    padding: 50px 0 0 0;
+  }
 
   h2 {
     color: $white;

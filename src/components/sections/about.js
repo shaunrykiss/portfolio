@@ -36,33 +36,34 @@ const About = () => (
             <div className="parallax-heading"></div>
           </Parallax>
 
-          <Controller>
-            <Scene
-              offset="-250"
-              classToggle="section-content--fade-in"
-              triggerElement=".about .section-content"
-              reverse="true"
-            >
-              <div className="section-content">
-                <h2 className="section-heading">Shaun Rykiss</h2>
-                <h3 className="section-subheading">Editor</h3>
-      
-                <div className="about__content">
-                  <div className="about__bio">
-                    <p>
-                      {data.allContentfulBio.edges[0].node.bioText.internal.content}
-                    </p>
-                  </div>
-      
-                  <div className="about__headshot">
-                    <Img
-                      fluid={data.allContentfulBio.edges[0].node.bioImage.fluid}
-                    ></Img>
+            <Controller>
+              <Scene
+                offset="-250"
+                triggerHook="onCenter"
+                classToggle="section-content--fade-in"
+                triggerElement=".about .section-content"
+                reverse="true"
+              >
+                <div className="section-content">
+                  <h2 className="section-heading">Shaun Rykiss</h2>
+                  <h3 className="section-subheading">Editor</h3>
+        
+                  <div className="about__content">
+                    <div className="about__bio">
+                      <p>
+                        {data.allContentfulBio.edges[0].node.bioText.internal.content}
+                      </p>
+                    </div>
+        
+                    <div className="about__headshot">
+                      <Img
+                        fluid={data.allContentfulBio.edges[0].node.bioImage.fluid}
+                      ></Img>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Scene>
-          </Controller>
+              </Scene>
+            </Controller>
         </div>
       </section>
     )}

@@ -4,7 +4,8 @@
 
   &:hover {
     .play-toggle,
-    .mute-toggle {
+    .mute-toggle,
+    .fullscreen-toggle {
       opacity: 1;
     }
 
@@ -20,12 +21,14 @@
 
   .play-toggle,
   .mute-toggle,
+  .fullscreen-toggle,
   &__info {
     position: absolute;
   }
 
   .play-toggle,
-  .mute-toggle {
+  .mute-toggle,
+  .fullscreen-toggle {
     opacity: 0;
 
     background: none;
@@ -52,12 +55,17 @@
     font-size: 4rem;
   }
 
-  .mute-toggle {
+  .mute-toggle,
+  .fullscreen-toggle {
     bottom: 10px;
     right: 8px;
     z-index: 30;
 
     font-size: 2rem;
+  }
+
+  .mute-toggle {
+    right: 48px;
   }
 
   &__info {

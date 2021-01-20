@@ -27,7 +27,7 @@ const Resume = props => {
 
   useLayoutEffect(() => {
     getContainerHeight()
-  }, [resumeProps, currentCategory])
+  }, [resumeProps, currentCategory]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const getContainerHeight = () => {
     if (currentCategory) {
@@ -90,10 +90,11 @@ const Resume = props => {
         <Parallax className="parallax" x={[80, -50]} styleOuter={parallaxStyle}>
           <div className="parallax-heading"></div>
         </Parallax>
-        
+
         <Controller>
           <Scene
             offset="-250"
+            triggerHook="onCenter"
             classToggle="section-content--fade-in"
             triggerElement=".resume .section-content"
             reverse="true"
@@ -112,24 +113,26 @@ const Resume = props => {
                 </a>
               </div>
 
-              <ul className="resume__categories">
-                {resumeProps.resumeCategories.map((category, i) => (
-                  <li key={i}>
-                    <button
-                      data-category={resumeProps.resumeSorted[category].slug}
-                      onClick={handleTabClick}
-                      className={`resume__category-tab${
-                        resumeProps.resumeSorted[category].slug ===
-                        currentCategory
-                          ? " active-tab"
-                          : ""
-                      }`}
-                    >
-                      {resumeProps.resumeSorted[category].title}
-                    </button>
-                  </li>
-                ))}
-              </ul>
+              <div className="resume__categories-container">
+                <ul className="resume__categories">
+                  {resumeProps.resumeCategories.map((category, i) => (
+                    <li key={i}>
+                      <button
+                        data-category={resumeProps.resumeSorted[category].slug}
+                        onClick={handleTabClick}
+                        className={`resume__category-tab${
+                          resumeProps.resumeSorted[category].slug ===
+                          currentCategory
+                            ? " active-tab"
+                            : ""
+                        }`}
+                      >
+                        {resumeProps.resumeSorted[category].title}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
               <div
                 className="resume__container"

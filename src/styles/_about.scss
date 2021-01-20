@@ -1,5 +1,17 @@
 .about {
-  padding: 50px 0;
+  padding: 20px 0 0 0;
+
+  background: $black;
+
+  transition: all 0.5s ease-in-out;
+
+  &--active {
+    background: $white;
+  }
+  
+  @include media-sm {
+    padding: 50px 0;
+  }
 
   .parallax-heading {
     &::before {
@@ -11,29 +23,80 @@
     font-weight: 300;
   }
 
+  h3 {
+    margin-bottom: 40px;
+
+    @include media-md {
+      margin-bottom: 70px;
+    }
+  }
+
   &__content {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 
-    width: 80%;
     margin: 0 auto;
 
+    @include media-md {
+      flex-direction: row;
+    }
+
+    @include media-lg {
+      width: 80%;
+    }
+
     p {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       letter-spacing: 0.4px;
+
+      @include media-sm {
+        font-size: 1.8rem;
+      }
     }
   }
 
   &__bio {
-    width: 70%;
-    margin-right: 35px;
+    order: 1;
+    
+    width: 100%;
 
     white-space: pre-wrap;
+
+    @include media-md {
+      order: 0;
+      
+      width: 65%;
+      margin-right: 35px;
+    }
+
+    @include media-lg {
+      width: 70%;
+    }
   }
 
   &__headshot {
-    width: 23%;
+    width: 50%;
+    margin: 0 auto 30px auto;
+
+    @include media-xs {
+      width: 45%;
+    }
+
+    @include media-sm {
+      width: 35%;
+    }
+
+    @include media-md {
+      width: 27%;
+
+      margin: 0;
+    }
+
+    @include media-lg {
+      width: 23%;
+    }
 
     img {
       border-radius: 12px;
