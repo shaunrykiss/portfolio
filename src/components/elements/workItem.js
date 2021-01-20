@@ -41,6 +41,7 @@ const WorkItem = props => {
 
         <h2 id={slugify(props.item.title)} className="work-item__title">
           {props.item.title}
+          {props.item.status && <span className="work-item__status">({props.item.status})</span>}
         </h2>
 
         {props.item.genre && (
@@ -101,7 +102,7 @@ const WorkItem = props => {
                 <h4>
                   {props.item.producers.length > 1 ? "Producers" : "Producer"}
                 </h4>
-                <p>{props.item.producers.join(", ")}</p>
+                <p>{listify(props.item.producers)}</p>
               </div>
             )}
           </div>

@@ -113,6 +113,8 @@ const Works = props => {
                   >
                     <Img fluid={item.image.fluid}></Img>
                     <div className="works__item-overlay">
+                      <h3>{item.title}</h3>
+                      <p>{item.genre}</p>
                       <div aria-hidden="true" className="works__learn-more">
                         <span>+</span>
                       </div>
@@ -179,6 +181,7 @@ export default () => (
               writers
               executiveProducers
               network
+              status
             }
           }
         }

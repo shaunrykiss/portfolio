@@ -179,25 +179,66 @@
     opacity: 0;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    background: radial-gradient(rgba(0,0,0, 0.8),rgba(0,0,0, 0.3));
+    background: radial-gradient(rgba(0,0,0, 0.9),rgba(0,0,0, 0.6));
     
     transition: all 0.3s ease-in-out;
+
+    h3,
+    p {
+      color: $white;
+    }
+
+    h3 {
+      margin: 0 auto 4px auto;
+      width: 85%;
+      font-size: 1.6rem;
+      color: $accent;
+      text-align: center;
+
+      @include media-lg {
+        font-size: 2.2rem;
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-family: $secondaryFont;
+      text-align: center;
+
+      @include media-lg {
+        font-size: 1.8rem;
+      }
+    }
   }
 
   &__learn-more {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    position: absolute;
+    top: 0px;
+    right: 0px;
     
-    width: 40px;
-    height: 40px;
-    border-radius: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 0;
+    border-bottom-left-radius: 2px;
     
     background: $white;
     color: transparent;
+
+    @include media-lg {
+      width: 30px;
+      height: 30px;
+      border-bottom-left-radius: 4px;
+    }
 
     &:hover {
       span {
@@ -206,13 +247,16 @@
     }
 
     span {
+      position: relative;
+      bottom: 1px;
+      
       color: $black;
-      font-size: 3.2rem;
+      font-size: 2.4rem;
       transition: color 0.3s ease-in-out;
-    }
-  }
 
-  &__modal {
-    background: red;
+      @include media-lg {
+        font-size: 3.4rem;
+      }
+    }
   }
 }
