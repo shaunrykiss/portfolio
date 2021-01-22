@@ -91,14 +91,26 @@
   }
 
   &__form-trigger {
+    background: none;
+    border: none;
+    
+    &:hover {
+      .contact__form-trigger-container::before {
+        left: 100%;
+      }
+
+      .fa-caret-right {
+        left: 36px;
+      }
+    }
+  }
+
+  &__form-trigger-container {
     display: flex;
     align-items: center;
     
     position: relative;
     left: -24px;
-    
-    background: none;
-    border: none;
 
     span {
       padding-left: 30px;
@@ -134,16 +146,6 @@
       font-size: 1.8rem;
 
       transition: left 0.3s ease-in-out;
-    }
-
-    &:hover {
-      &::before {
-        left: 100%;
-      }
-
-      .fa-caret-right {
-        left: 36px;
-      }
     }
   }
 

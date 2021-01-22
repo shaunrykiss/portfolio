@@ -38,6 +38,7 @@ const Contact = (props) => {
                     className="contact__info-point"
                     href="mailto:shaunrykiss@gmail.com"
                     target="_blank"
+                    rel="noreferrer"
                   >
                     <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
                     <span>shaunrykiss&#64;gmail&#46;com</span>
@@ -65,8 +66,10 @@ const Contact = (props) => {
                   className="contact__form-trigger"
                   onClick={() => setFormIsOpen(true)}
                 >
-                  <span>Contact Form</span>
-                  <FontAwesomeIcon icon={faCaretRight}></FontAwesomeIcon>
+                  <div className="contact__form-trigger-container">
+                    <span>Contact Form</span>
+                    <FontAwesomeIcon icon={faCaretRight}></FontAwesomeIcon>
+                  </div>
                 </button>
               </div>
 

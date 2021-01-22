@@ -28,8 +28,10 @@ const About = props => (
 
         
           <div className="section-content">
-            <h2 className="section-heading">Shaun Rykiss</h2>
-            <h3 className="section-subheading">Editor</h3>
+            <div className="about__header">
+              <h2 className="section-heading">Shaun Rykiss</h2>
+              <h3 className="section-subheading">Editor</h3>
+            </div>
 
             <div className="about__content">
               <div className="about__bio">

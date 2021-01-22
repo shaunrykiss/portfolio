@@ -19,6 +19,23 @@
     }
   }
 
+  &__header {
+    height: 0;
+    overflow: hidden;
+    
+    position: relative;
+    bottom: 150px;
+
+    opacity: 0;
+
+    transition: bottom 1s ease-in-out, opacity 0.4s ease-in-out, height 0.5s 0.3s;
+
+    @include media-md {
+      bottom: 0;
+      opacity: 1;
+    }
+  }
+
   h2 {
     font-weight: 300;
   }
@@ -101,6 +118,24 @@
     img {
       border-radius: 12px;
       height: 200px;
+    }
+  }
+}
+
+.portfolio--inactive + .about {
+  .about__header {
+    display: block;
+    bottom: 0;
+    opacity: 1;
+
+    height: 123px;
+
+    overflow: visible;
+
+    transition: bottom 0.5s ease-in-out, opacity 0.5s ease-in-out 0.2s, height 0.5s 0s;
+
+    @include media-md {
+      height: auto;
     }
   }
 }

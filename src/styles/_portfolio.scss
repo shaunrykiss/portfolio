@@ -4,16 +4,29 @@
   align-items: center;
   justify-content: center;
 
-  height: 100vh;
   padding-top: 84px;
   
   background: $black;
 
+  @include media-md {
+    height: 100vh;
+  }
+
+  .wrapper {
+    width: 100%;
+
+    @include media-md {
+      width: 90%;
+    }
+  }
+
   &__carousel {
     position: relative;
-    
-    width: 90%;
-    margin: 0 auto 134px auto;
+
+    @include media-md {
+      width: 90%;
+      margin: 0 auto 134px auto;
+    }
 
     @include media-xl {
       width: 100%;
@@ -29,24 +42,37 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -85%);
     
     background: transparent;
     border: none;
 
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 200;
     color: $white;
 
     opacity: 1;
     transition: all 0.3s ease-in-out;
 
+    @include media-sm {
+      transform: translate(-50%, -110%);
+      font-size: 3rem;
+    }
+
+    @include media-md {
+      transform: translate(-50%, -50%);
+    }
+
     .fa-play {
       color: $accent;
-      font-size: 3.5rem;
+      font-size: 3rem;
 
       transform: scale(1);
       transition: 0.3s ease-in-out;
+
+      @include media-sm {
+        font-size: 3.5rem;
+      }
     }
 
     span {
@@ -67,9 +93,12 @@
 
   .slick-track .slick-slide {
     display: flex;
-    height: auto;
     align-items: center;
     justify-content: center;
+    
+    @include media-md {
+      height: auto;
+    }
   }
 
   .slick-arrow {
@@ -79,33 +108,59 @@
   .slick-prev,
   .slick-next {
     color: $white;
-    font-size: 3.8rem;
-    opacity: 0.7;
+    font-size: 3rem;
+
+    top: auto;
+    bottom: 14px;
+    z-index: 20;
 
     transition: all 0.3s ease-in-out;
 
-    &:hover {
-      opacity: 1;
-      color: $accent;
+    @include media-md {
+      bottom: auto;
+      top: 50%;
+
+      opacity: 0.7;
+
+      font-size: 3.8rem;
+
+      &:hover {
+        opacity: 1;
+        color: $accent;
+      }
     }
   }
 
   .slick-prev {
-    left: -80px;
+    left: 12px;
+
+    @include media-md {
+      left: -80px;
+    }
   }
 
   .slick-next {
-    right: -80px;
+    right: 12px;
+
+    @include media-md {
+      right: -80px;
+    }
   }
 
   &__title {    
-    position: absolute;
-    bottom: 24px;
-    left: 50%;
-
-    transform: translateX(-50%);
+    width: 100%;
     
-    margin-top: 40px;
+    margin-bottom: 10px;
+
+    @include media-md {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      margin: 40px 0 0 0;
+    }
     
     h1,
     h2 {      
@@ -120,13 +175,23 @@
     
     h1 {
       color: $white;
-      font-size: 3.8rem;
       line-height: 0.7;
+
+      font-size: 4.2rem;
+
+      @include media-md {
+        font-size: 3.8rem;
+      }
     }
 
     h2 {
       color: $accent;
-      font-size: 3.2rem;
+
+      font-size: 3.4rem;
+
+      @include media-md {
+        font-size: 3.2rem;
+      }
     }
   }
 
