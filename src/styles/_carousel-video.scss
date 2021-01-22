@@ -29,7 +29,7 @@
   }
 
   &__info {
-    margin-top: 10px;
+    text-align: center;
 
     letter-spacing: 0.3px;
     color: $white;
@@ -133,6 +133,7 @@
 
       letter-spacing: 0.3px;
       color: $white;
+      text-align: left;
 
       transition: all 0.4s ease-in-out;
 

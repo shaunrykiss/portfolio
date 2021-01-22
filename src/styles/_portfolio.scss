@@ -42,7 +42,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -85%);
+    transform: translate(-50%, -50%);
     
     background: transparent;
     border: none;
@@ -55,12 +55,7 @@
     transition: all 0.3s ease-in-out;
 
     @include media-sm {
-      transform: translate(-50%, -110%);
       font-size: 3rem;
-    }
-
-    @include media-md {
-      transform: translate(-50%, -50%);
     }
 
     .fa-play {
@@ -111,13 +106,13 @@
     font-size: 3rem;
 
     top: auto;
-    bottom: 14px;
+    bottom: 20px;
     z-index: 20;
 
     transition: all 0.3s ease-in-out;
 
     @include media-sm {
-      bottom: 40px;
+      bottom: 26px;
     }
 
     @include media-md {
@@ -163,6 +158,7 @@
     width: 100%;
     
     margin-bottom: 10px;
+    margin-top: 50px;
 
     @include media-md {
       position: absolute;

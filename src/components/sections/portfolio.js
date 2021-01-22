@@ -13,6 +13,7 @@ import SlickButtonFix from '../elements/slickButtonFix';
 
 const Portfolio = props => {
   const carouselSettings = {
+    adaptiveHeight: true,
     arrows: true,
     cssEase: "ease-in-out",
     dots: false,
