@@ -60,16 +60,16 @@ const Works = props => {
   }
 
   return (
-    <section className="works" id="works">
-      <div className="wrapper">
-        <Controller>
-          <Scene
-            offset="-250"
-            triggerHook="onCenter"
-            classToggle="section-content--fade-in"
-            triggerElement=".works .section-content"
-            reverse="true"
-          >
+    <Controller>
+      <Scene
+        offset="-350"
+        triggerHook="onCenter"
+        classToggle="section--fade-in"
+        triggerElement=".works"
+        reverse="true"
+      >
+        <section className="works" id="works">
+          <div className="wrapper">
             <div className="section-content">
               <h2 className="section-heading">Works</h2>
 
@@ -125,26 +125,26 @@ const Works = props => {
                 ))}
               </div>
             </div>
-          </Scene>
-        </Controller>
-      </div>
+          </div>
 
-      <Modal
-        open={modalIsOpen}
-        onClose={closeModal}
-        center
-        aria-labelledby={"slugify(selectedItem.title)"}
-        classNames={{
-          overlay: "work-item-modal__overlay",
-          modal: "work-item-modal",
-          closeButton: "work-item-modal__close",
-        }}
-      >
-        <WorkItem item={selectedItem} closeModal={closeModal}></WorkItem>
-      </Modal>
-    </section>
-  )
-}
+          <Modal
+            open={modalIsOpen}
+            onClose={closeModal}
+            center
+            aria-labelledby={"slugify(selectedItem.title)"}
+            classNames={{
+              overlay: "work-item-modal__overlay",
+              modal: "work-item-modal",
+              closeButton: "work-item-modal__close",
+            }}
+          >
+            <WorkItem item={selectedItem} closeModal={closeModal}></WorkItem>
+          </Modal>
+        </section>
+      </Scene>
+    </Controller>
+  );
+};
 
 export default () => (
   <StaticQuery

@@ -108,10 +108,14 @@
     margin-top: 40px;
     
     h1,
-    h2 {
+    h2 {      
       text-transform: uppercase;
       font-weight: 200;
       text-align: center;
+
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.5s ease-in-out;
     }
     
     h1 {
@@ -129,6 +133,14 @@
   &.portfolio-active {
     .slick-arrow {
       display: block !important;
+    }
+  }
+
+  &--inactive {
+    h1,
+    h2 {
+      opacity: 0;
+      transform: translateY(-30px);
     }
   }
 }

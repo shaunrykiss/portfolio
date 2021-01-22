@@ -4,6 +4,8 @@ import Slider from "react-slick";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
+import { Controller, Scene } from "react-scrollmagic"
+
 import { StaticQuery, graphql } from 'gatsby';
 
 import CarouselVideo from '../elements/carouselVideo';
@@ -95,42 +97,52 @@ const Portfolio = props => {
   }
 
   return (
-    <section
-      className={`portfolio${portfolioTriggered ? " portfolio-active" : ""}`}
-      id="portfolio"
-    >
-      <div className="wrapper">
-        <div className="portfolio__carousel">
-          <Slider {...carouselSettings} ref={slider}>
-            {carouselVideos.map((video, i) => (
-              <CarouselVideo
-                key={i}
-                firstSlide={i === 0}
-                lastSlide={i === carouselVideos.length - 1}
-                isCurrent={i === currentSlide}
-                video={video}
-                portfolioTriggered={portfolioTriggered}
-                handleVideoEnd={handleVideoEnd}
-              />
-            ))}
-          </Slider>
-
-          <button
-            className="portfolio__trigger-button"
-            onClick={triggerPortfolio}
-            ref={triggerButton}
-          >
-            <FontAwesomeIcon icon={faPlay}></FontAwesomeIcon>
-            <span>View Portfolio</span>
-          </button>
-        </div>
-
-        <div className="portfolio__title">
-          <h1>Shaun Rykiss</h1>
-          <h2>Editor</h2>
-        </div>
-      </div>
-    </section>
+    <Controller>
+      <Scene
+        offset="40"
+        triggerHook="onLeave"
+        classToggle="portfolio--inactive"
+        triggerElement=".portfolio"
+        reverse="true"
+      >
+        <section
+          className={`portfolio${portfolioTriggered ? " portfolio-active" : ""}`}
+          id="portfolio"
+        >
+          <div className="wrapper">
+            <div className="portfolio__carousel">
+              <Slider {...carouselSettings} ref={slider}>
+                {carouselVideos.map((video, i) => (
+                  <CarouselVideo
+                    key={i}
+                    firstSlide={i === 0}
+                    lastSlide={i === carouselVideos.length - 1}
+                    isCurrent={i === currentSlide}
+                    video={video}
+                    portfolioTriggered={portfolioTriggered}
+                    handleVideoEnd={handleVideoEnd}
+                  />
+                ))}
+              </Slider>
+    
+              <button
+                className="portfolio__trigger-button"
+                onClick={triggerPortfolio}
+                ref={triggerButton}
+              >
+                <FontAwesomeIcon icon={faPlay}></FontAwesomeIcon>
+                <span>View Portfolio</span>
+              </button>
+            </div>
+    
+            <div className="portfolio__title">
+              <h1>Shaun Rykiss</h1>
+              <h2>Editor</h2>
+            </div>
+          </div>
+        </section>
+      </Scene>
+    </Controller>
   )
 };
 

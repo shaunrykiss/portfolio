@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 
-import { faShareSquare } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faShareSquare } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import SocialLinksList from "../elements/socialLinksList"
+// import SocialLinksList from "../elements/socialLinksList"
 
 const currentYear = new Date().getFullYear();
 
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
 const Footer = ({ socialLinks }) => {
-  const [ showSocialLinks, toggleShowSocialLinks ] = useState(false);
+  // const [ showSocialLinks, toggleShowSocialLinks ] = useState(false);
   
   return (
     <footer className="footer">
@@ -19,7 +19,7 @@ const Footer = ({ socialLinks }) => {
           <span>©</span> Shaun Rykiss {currentYear}
         </p>
 
-        <div
+        {/* <div
           className="footer__social"
           onMouseEnter={() => toggleShowSocialLinks(true)}
           onMouseLeave={() => toggleShowSocialLinks(false)}
@@ -34,7 +34,7 @@ const Footer = ({ socialLinks }) => {
             <FontAwesomeIcon icon={faShareSquare}></FontAwesomeIcon>
             <span className="sr-only">{showSocialLinks ? 'Show Social Links' : 'Hide Social Links'}</span>
           </button>
-        </div>
+        </div> */}
       </div>
     </footer>
   )

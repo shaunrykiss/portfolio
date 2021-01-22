@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 import ReactPlayer from 'react-player';
 import Img from 'gatsby-image';
@@ -16,8 +16,14 @@ const WorkItem = props => {
   const itemHasProductionInfo = props.item.production || props.item.network;
 
   const loader = useRef('');
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener('resize', () => setWindowWidth(window.innerWidth));
+  }, []);
   
-  const media = itemHasVideo ? <ReactPlayer width="100%" url={props.item.link} controls={true} onReady={() => hideLoader()}></ReactPlayer> : <Img fluid={props.item.image.fluid}></Img>
+  const media = itemHasVideo ? <ReactPlayer width="100%" height={windowWidth > 1800 ? '720px' : '360px'} url={props.item.link} controls={true} onReady={() => hideLoader()}></ReactPlayer> : <Img fluid={props.item.image.fluid}></Img>
 
   const hideLoader = () => {
     loader.current.style.opacity = 0;
@@ -45,9 +51,7 @@ const WorkItem = props => {
         </h2>
 
         {props.item.genre && (
-          <>
-            <p className="work-item__genre">{props.item.genre}</p>
-          </>
+          <p className="work-item__genre">{props.item.genre}</p>
         )}
 
         <div className="work-item__time-info">

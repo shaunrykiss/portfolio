@@ -6,6 +6,9 @@ import { parallaxStyle } from '../../utilities/helper-functions';
 import { Parallax } from "react-scroll-parallax";
 import { Controller, Scene } from "react-scrollmagic";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilePdf } from "@fortawesome/free-regular-svg-icons";
+
 import ResumeItem from '../elements/resumeItem';
 
 const Resume = props => {
@@ -20,22 +23,21 @@ const Resume = props => {
   const [containerHeight, setContainerHeight] = useState(0)
 
   useEffect(() => {
-    sortResumeItems()
+    sortResumeItems();
 
-    window.addEventListener("resize", getContainerHeight)
+    window.addEventListener("resize", () => getContainerHeight()) 
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   useLayoutEffect(() => {
-    getContainerHeight()
+    getContainerHeight();
   }, [resumeProps, currentCategory]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  const getContainerHeight = () => {
+  const getContainerHeight = () => {    
     if (currentCategory) {
       const currentSlide = document.querySelector(`.resume__slide[data-category='${currentCategory}']`);
-
+      
       setContainerHeight(currentSlide.clientHeight);
     }
-
   }
 
   const sortResumeItems = () => {
@@ -85,20 +87,24 @@ const Resume = props => {
     props.data.allContentfulResumeFile.edges[0].node.resumeFile.file.url
 
   return (
-    <section className="resume" id="resume">
-      <div className="wrapper">
-        <Parallax className="parallax" x={[80, -50]} styleOuter={parallaxStyle}>
-          <div className="parallax-heading"></div>
-        </Parallax>
+    <Controller>
+      <Scene
+        offset="-250"
+        triggerHook="onCenter"
+        classToggle="section--fade-in"
+        triggerElement=".resume"
+        reverse="true"
+      >
+        <section className="resume" id="resume">
+          <div className="wrapper">
+            <Parallax
+              className="parallax"
+              x={[80, -50]}
+              styleOuter={parallaxStyle}
+            >
+              <div className="parallax-heading"></div>
+            </Parallax>
 
-        <Controller>
-          <Scene
-            offset="-250"
-            triggerHook="onCenter"
-            classToggle="section-content--fade-in"
-            triggerElement=".resume .section-content"
-            reverse="true"
-          >
             <div className="section-content">
               <div className="resume__header">
                 <h2 className="section-heading">Resume / CV</h2>
@@ -109,7 +115,8 @@ const Resume = props => {
                   href={resumeFile}
                   download
                 >
-                  download
+                  <span>download</span>
+                  <FontAwesomeIcon icon={faFilePdf}></FontAwesomeIcon>
                 </a>
               </div>
 
@@ -165,11 +172,11 @@ const Resume = props => {
                 })}
               </div>
             </div>
-          </Scene>
-        </Controller>
-      </div>
-    </section>
-  )
+          </div>
+        </section>
+      </Scene>
+    </Controller>
+  );
 }
 
 export default () => (

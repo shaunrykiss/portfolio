@@ -1,6 +1,8 @@
 .work-item {
   position: relative;
 
+  background: rgba(0,0,0,1);
+
   .svg-inline--fa {
     font-size: 1.6rem;
     margin-right: 6px;
@@ -134,5 +136,6 @@
   &__description {
     margin-top: 20px;
     font-family: $accentFont;
+    white-space: pre-wrap;
   }
 }

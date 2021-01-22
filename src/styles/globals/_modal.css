@@ -16,6 +16,10 @@
   right: 0;
 }
 
+.contact-form__close {
+  display: none;
+}
+
 .work-item-modal__close svg,
 .contact-form__close svg {
   transition: fill 0.2s ease-in-out;
@@ -28,6 +32,13 @@
 
 .work-item-modal__close svg {
   fill: white;
+}
+
+@media (min-width: 1800px) {
+  .work-item-modal {
+    width: 1280px;
+    max-width: none;
+  }
 }
 
 @media (max-width: 767px) {
@@ -45,6 +56,12 @@
 
   .work-item-modal__close {
     display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .contact-form__close {
+    display: block;
   }
 }
   

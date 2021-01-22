@@ -44,7 +44,7 @@ a,
 h4 {
   font-size: 1.6rem; 
   font-weight: 300;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.7px;
 }
 
 .wrapper {
@@ -62,21 +62,23 @@ h4 {
   margin: 0 auto;
 }
 
+.section--fade-in {
+  .section-content {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
 .section-content {
   padding: 40px 0 55px 0;
 
   opacity: 0;
   transform: translateY(30px);
 
-  transition: all 0.5s ease-in-out;
+  transition: all 0.7s ease-in-out;
 
   @include media-lg {
     padding: 40px 0 70px 0;
-  }
-
-  &--fade-in {
-    opacity: 1;
-    transform: translateY(0px);
   }
 }
 

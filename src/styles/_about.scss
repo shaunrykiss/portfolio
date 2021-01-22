@@ -3,10 +3,10 @@
 
   background: $black;
 
-  transition: all 0.5s ease-in-out;
+  transition: background 1s ease-in-out 0.2s;
 
-  &--active {
-    background: $white;
+  &.section--fade-in {
+    background: transparent;
   }
   
   @include media-sm {

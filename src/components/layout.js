@@ -6,6 +6,8 @@ import Header from './sections/header';
 import Footer from './sections/footer';
 import Maintenance from './sections/maintenance';
 
+import favicon from '../../static/favicon.png';
+
 const SiteContent = ({children, socialLinks}) => (
   <React.Fragment>
     <Header></Header>
@@ -44,14 +46,15 @@ export default function Layout({ children, socialLinks }) {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link type="image/png" href={favicon} rel="icon" />
         <title>{siteData.site.siteMetadata.title}</title>
       </Helmet>
 
-      {siteUnderMaintenance ?
-        <Maintenance/>
-        :
+      {siteUnderMaintenance ? (
+        <Maintenance />
+      ) : (
         <SiteContent children={children} socialLinks={socialLinks} />
-      }
+      )}
     </div>
   )
 }

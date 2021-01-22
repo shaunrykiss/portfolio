@@ -55,6 +55,20 @@
 
   .slick-slide {
     transition: opacity 0.3s ease;
+
+    @include media-sm {
+      opacity: 0.35;
+    }
+
+    @include media-lg {
+      opacity: 0.2;
+    }
+  }
+
+  @include media-sm {
+    .slick-current + .slick-active {
+      opacity: 1;
+    }
   }
 
   @include media-lg {
@@ -63,9 +77,8 @@
       opacity: 0.5;
     }
 
-    .slick-current,
-    .slick-current + .slick-active + .slick-active + .slick-active + .slick-active {
-      opacity: 0.2;
+    .slick-current + .slick-active + .slick-active {
+      opacity: 1;
     }
   }
 

@@ -2,10 +2,10 @@
   position: relative;
 
   padding-top: 30px;
-  padding-bottom: 80px;
+  padding-bottom: 50px;
 
   @include media-md {
-    padding-top: 0;
+    padding-bottom: 80px;
   }
 
   .section-content {
@@ -41,9 +41,14 @@
     }
 
     a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      
       position: relative;
 
-      &::after {
+      span::after {
         content: '';
         position: absolute;
         left: 0;
@@ -58,7 +63,7 @@
       }
 
       &:hover {
-        &::after {
+        span::after {
           width: 100%;
         }
       }

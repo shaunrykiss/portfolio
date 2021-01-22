@@ -103,5 +103,20 @@
         color: $accent;
       }
     }
+
+    .close {
+      align-self: flex-end;
+
+      margin-bottom: 10px;
+      
+      border: none;
+      background: transparent;
+
+      font-size: 3rem;
+
+      @include media-md {
+        display: none;
+      }
+    }
   }
 }
