@@ -46,17 +46,12 @@ const WorkItem = props => {
           <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>
         </button>
 
-        <div className="work-item__header">
-          <h2 id={slugify(props.item.title)} className="work-item__title">
-            {props.item.title}
-            {props.item.status && <span className="work-item__status">({props.item.status})</span>}
-          </h2>
-
-          {props.item.imdbLink && 
-            <a target="_blank" rel="noreferrer" className="work-item__imdb-link" href={props.item.imdbLink}>
-              <FontAwesomeIcon icon={faImdb}></FontAwesomeIcon>
-            </a>}
-        </div>
+        <h2 id={slugify(props.item.title)} className="work-item__title">
+          {props.item.title}
+          {props.item.status && (
+            <span className="work-item__status">({props.item.status})</span>
+          )}
+        </h2>
 
         {props.item.genre && (
           <p className="work-item__genre">{props.item.genre}</p>
@@ -82,7 +77,20 @@ const WorkItem = props => {
 
         {itemHasCredits && (
           <div className="work-item__credits">
-            <h3>Credits</h3>
+            <div className="work-item__credits-header">
+              <h3>Credits</h3>
+  
+              {props.item.imdbLink && (
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  className="work-item__imdb-link"
+                  href={props.item.imdbLink}
+                >
+                  <FontAwesomeIcon icon={faImdb}></FontAwesomeIcon>
+                </a>
+              )}
+            </div>
 
             {props.item.directors && (
               <div className="work-item__credit-category">
@@ -103,7 +111,9 @@ const WorkItem = props => {
             {props.item.executiveProducers && (
               <div className="work-item__credit-category">
                 <h4>
-                  {props.item.executiveProducers.length > 1 ? "Executive Producers" : "Executive Producer"}
+                  {props.item.executiveProducers.length > 1
+                    ? "Executive Producers"
+                    : "Executive Producer"}
                 </h4>
                 <p>{listify(props.item.executiveProducers)}</p>
               </div>

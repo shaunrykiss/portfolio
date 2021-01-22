@@ -1,7 +1,6 @@
 
 /* Work Item Modal */
 .work-item-modal {
-  padding: 45px 0 0 0;
   max-height: 90vh;
   width: 640px;
   background: transparent;
@@ -13,25 +12,19 @@
 }
 
 .work-item-modal__close {
-  right: 0;
+  display: none;
 }
 
 .contact-form__close {
   display: none;
 }
 
-.work-item-modal__close svg,
 .contact-form__close svg {
   transition: fill 0.2s ease-in-out;
 }
 
-.work-item-modal__close:hover svg,
 .contact-form__close:hover svg {
   fill: #1B83EA;
-}
-
-.work-item-modal__close svg {
-  fill: white;
 }
 
 @media (min-width: 1800px) {
@@ -46,16 +39,12 @@
   .contact-form__modal {
     padding: 0;
     margin: 0;
-    max-height: 100vh;
-    width: 95vw;
+    max-height: 80vh;
+    width: 90vw;
   }
 
   .contact-form__modal {
     height: 100vh;
-  }
-
-  .work-item-modal__close {
-    display: none;
   }
 }
 

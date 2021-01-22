@@ -2,98 +2,42 @@
   position: relative;
   overflow: hidden;
 
-  &:hover {
-    .play-toggle,
-    .mute-toggle,
-    .fullscreen-toggle {
-      opacity: 1;
-    }
-
-    .carousel-video__info {
-      bottom: 0;
-      opacity: 1;
-    }
+  &__overlay-content {
+    background: linear-gradient(to bottom, black, transparent);
+    padding: 10px;
   }
 
   &__controls {
-    z-index: 20;
-  }
-
-  .play-toggle,
-  .mute-toggle,
-  .fullscreen-toggle,
-  &__info {
-    position: absolute;
+    display: flex;
+    justify-content: space-between;
   }
 
   .play-toggle,
   .mute-toggle,
   .fullscreen-toggle {
-    opacity: 0;
-
     background: none;
     border: none;
 
     color: $white;
 
-    transition: all 0.3s ease-in-out;
-
-    z-index: 10;
-
-    svg {
-      filter: drop-shadow(0px 0px 8px rgba(0,0,0,0.6));   
-    }
-
-    &:hover {
-      color: $accent;
-    }
-  }
-
-  .play-toggle {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    font-size: 4rem;
+    font-size: 1.8rem;
   }
 
   .mute-toggle,
   .fullscreen-toggle {
-    top: 10px;
-    right: 8px;
-    z-index: 30;
-
-    font-size: 2rem;
-
-    @include media-md {
-      bottom: 10px;
-      top: auto;
-    }
-  }
-
-  .mute-toggle {
-    right: 48px;
+    margin-left: 12px;
   }
 
   &__info {
-    bottom: -50%;
-    left: 0;
-    right: 0;
-
-    opacity: 0;
-
-    padding: 40px 10px 10px 10px;
-
-    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.4) 49%, transparent 100%);
+    margin-top: 10px;
 
     letter-spacing: 0.3px;
     color: $white;
 
-    transition: all 0.4s ease-in-out;
-
     .title {
       font-size: 2.4rem;
-      font-weight: 600;
+      text-transform: uppercase;
+      color: $accent;
     }
 
     .description {
@@ -102,23 +46,120 @@
     }
   }
 
-  &__overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+  @include media-md {
+    &:hover {
+      .play-toggle,
+      .mute-toggle,
+      .fullscreen-toggle {
+        opacity: 1;
+      }
 
-    z-index: 10;
+      .carousel-video__info {
+        bottom: 0;
+        opacity: 1;
+      }
+    }
 
-    background: rgba(0,0,0,0.6);
-    opacity: 1;
+    &__overlay-content {
+      background: none;
+      padding: 0;
+    }
 
-    transition: all 0.3s ease-in-out;
+    &__controls {
+      z-index: 20;
+    }
 
-    &.active {
+    .play-toggle,
+    .mute-toggle,
+    .fullscreen-toggle,
+    &__info {
+      position: absolute;
+    }
+
+    .play-toggle,
+    .mute-toggle,
+    .fullscreen-toggle {
       opacity: 0;
-      z-index: -1;
+
+      transition: all 0.3s ease-in-out;
+
+      z-index: 10;
+
+      svg {
+        filter: drop-shadow(0px 0px 8px rgba(0,0,0,0.6));   
+      }
+
+      &:hover {
+        color: $accent;
+      }
+    }
+
+    .play-toggle {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      font-size: 4rem;
+    }
+
+    .mute-toggle,
+    .fullscreen-toggle {
+      top: 10px;
+      right: 8px;
+      z-index: 30;
+
+      font-size: 2rem;
+
+      @include media-md {
+        bottom: 10px;
+        top: auto;
+      }
+    }
+
+    .mute-toggle {
+      right: 48px;
+    }
+
+    &__info {
+      bottom: -50%;
+      left: 0;
+      right: 0;
+
+      opacity: 0;
+
+      padding: 40px 10px 10px 10px;
+
+      background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.4) 60%, transparent 100%);
+
+      letter-spacing: 0.3px;
+      color: $white;
+
+      transition: all 0.4s ease-in-out;
+
+      .title {
+        font-size: 3rem;
+        text-shadow: 0 0 18px rgba(0,0,0,1);
+      }
+    }
+
+    &__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      z-index: 10;
+
+      background: rgba(0,0,0,0.6);
+      opacity: 1;
+
+      transition: all 0.3s ease-in-out;
+
+      &.active {
+        opacity: 0;
+        z-index: -1;
+      }
     }
   }
 }

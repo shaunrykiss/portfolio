@@ -145,10 +145,12 @@
 
     transition: opacity 0.3s ease, width 0s 0.3s, margin 0s 0.3s;
 
-    &:hover {
-      .works__item-overlay {
-        opacity: 1;
-        z-index: 1;
+    @include media-md {
+      &:hover {
+        .works__item-overlay {
+          opacity: 1;
+          z-index: 1;
+        }
       }
     }
 
@@ -187,7 +189,7 @@
     justify-content: center;
     align-items: center;
 
-    padding: 0 5px;
+    padding: 0 10px;
 
     background: radial-gradient(rgba(0,0,0, 0.9),rgba(0,0,0, 0.6));
     

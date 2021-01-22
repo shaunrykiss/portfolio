@@ -36,7 +36,7 @@ const CarouselVideo = props => {
   }
 
   const toggleMuteStatus = () => {
-    video.current.muted = !videoIsMuted
+    video.current.muted = video.current.muted ? false : true;
 
     toggleVideoIsMuted(!videoIsMuted)
   }
@@ -51,39 +51,43 @@ const CarouselVideo = props => {
 
   return (
     <div className="carousel-video">
-      <video playsInline width="100%" ref={video} muted={videoIsMuted} onEnded={videoEnded}>
+      <video playsInline width="100%" ref={video} muted onEnded={videoEnded}>
         <source src={props.video.videoUrl} type="video/mp4" />
         <track kind="captions" />
       </video>
 
       {props.portfolioTriggered && (
-        <div className="carousel-video__controls">
-          <button className="play-toggle" onClick={togglePlayStatus}>
-            <FontAwesomeIcon
-              icon={videoIsPlaying ? faPause : faPlay}
-            ></FontAwesomeIcon>
-            <span className="sr-only">
-              {videoIsPlaying ? "Pause Video" : "Play Video"}
-            </span>
-          </button>
-
-          <button className="mute-toggle" onClick={toggleMuteStatus}>
-            <FontAwesomeIcon
-              icon={videoIsMuted ? faVolumeUp : faVolumeMute}
-            ></FontAwesomeIcon>
-            <span className="sr-only">
-              {videoIsMuted ? "Unmute Video" : "Mute Video"}
-            </span>
-          </button>
-
-          <button
-            className="fullscreen-toggle"
-            onClick={toggleFullScreenStatus}
-          >
-            <FontAwesomeIcon icon={faExpand}></FontAwesomeIcon>
-            <span className="sr-only">Enter Full Screen View</span>
-          </button>
-
+        <div className="carousel-video__overlay-content">
+          <div className="carousel-video__controls">
+            <button className="play-toggle" onClick={togglePlayStatus}>
+              <FontAwesomeIcon
+                icon={videoIsPlaying ? faPause : faPlay}
+              ></FontAwesomeIcon>
+              <span className="sr-only">
+                {videoIsPlaying ? "Pause Video" : "Play Video"}
+              </span>
+            </button>
+  
+            <div className="carousel-video__toggles">
+              <button className="mute-toggle" onClick={toggleMuteStatus}>
+                <FontAwesomeIcon
+                  icon={videoIsMuted ? faVolumeUp : faVolumeMute}
+                ></FontAwesomeIcon>
+                <span className="sr-only">
+                  {videoIsMuted ? "Unmute Video" : "Mute Video"}
+                </span>
+              </button>
+    
+              <button
+                className="fullscreen-toggle"
+                onClick={toggleFullScreenStatus}
+              >
+                <FontAwesomeIcon icon={faExpand}></FontAwesomeIcon>
+                <span className="sr-only">Enter Full Screen View</span>
+              </button>
+            </div>
+          </div>
+  
           <div className="carousel-video__info">
             <p className="title">{props.video.title}</p>
             <p className="description">{props.video.description}</p>

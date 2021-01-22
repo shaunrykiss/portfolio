@@ -1,13 +1,7 @@
 .about {
   padding: 20px 0 0 0;
 
-  background: $black;
-
-  transition: background 1s ease-in-out 0.2s;
-
-  &.section--fade-in {
-    background: transparent;
-  }
+  background: $white;
   
   @include media-sm {
     padding: 50px 0;
