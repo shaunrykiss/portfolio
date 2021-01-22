@@ -6,7 +6,8 @@ import Loader from 'react-loader-spinner';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
-import { faTimes } from "@fortawesome/free-solid-svg-icons"
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faImdb } from "@fortawesome/free-brands-svg-icons";
 
 import { slugify, listify } from '../../utilities/helper-functions';
 
@@ -45,10 +46,17 @@ const WorkItem = props => {
           <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>
         </button>
 
-        <h2 id={slugify(props.item.title)} className="work-item__title">
-          {props.item.title}
-          {props.item.status && <span className="work-item__status">({props.item.status})</span>}
-        </h2>
+        <div className="work-item__header">
+          <h2 id={slugify(props.item.title)} className="work-item__title">
+            {props.item.title}
+            {props.item.status && <span className="work-item__status">({props.item.status})</span>}
+          </h2>
+
+          {props.item.imdbLink && 
+            <a target="_blank" rel="noreferrer" className="work-item__imdb-link" href={props.item.imdbLink}>
+              <FontAwesomeIcon icon={faImdb}></FontAwesomeIcon>
+            </a>}
+        </div>
 
         {props.item.genre && (
           <p className="work-item__genre">{props.item.genre}</p>

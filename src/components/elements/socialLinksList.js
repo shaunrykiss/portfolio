@@ -7,7 +7,7 @@ import {
   faLinkedin,
   faTwitterSquare,
   faImdb,
-} from "@fortawesome/free-brands-svg-icons"
+} from "@fortawesome/free-brands-svg-icons";
 
 const SocialLinksList = props => {
   const iconList = {

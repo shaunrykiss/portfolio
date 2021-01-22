@@ -131,7 +131,7 @@ const Works = props => {
             open={modalIsOpen}
             onClose={closeModal}
             center
-            aria-labelledby={"slugify(selectedItem.title)"}
+            aria-labelledby={selectedItem.title}
             classNames={{
               overlay: "work-item-modal__overlay",
               modal: "work-item-modal",
@@ -183,6 +183,7 @@ export default () => (
               executiveProducers
               network
               status
+              imdbLink
             }
           }
         }
