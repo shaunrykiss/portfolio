@@ -51,7 +51,7 @@ const CarouselVideo = props => {
 
   return (
     <div className="carousel-video">
-      <video playsinline width="100%" ref={video} muted={videoIsMuted} onEnded={videoEnded}>
+      <video playsInline width="100%" ref={video} muted={videoIsMuted} onEnded={videoEnded}>
         <source src={props.video.videoUrl} type="video/mp4" />
         <track kind="captions" />
       </video>

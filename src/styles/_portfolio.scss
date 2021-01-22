@@ -116,6 +116,10 @@
 
     transition: all 0.3s ease-in-out;
 
+    @include media-sm {
+      bottom: 40px;
+    }
+
     @include media-md {
       bottom: auto;
       top: 50%;
@@ -135,6 +139,10 @@
     left: 12px;
 
     @include media-md {
+      left: -50px;
+    }
+
+    @include media-lg {
       left: -80px;
     }
   }
@@ -143,6 +151,10 @@
     right: 12px;
 
     @include media-md {
+      right: -50px;
+    }
+
+    @include media-lg {
       right: -80px;
     }
   }
