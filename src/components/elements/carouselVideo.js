@@ -43,8 +43,12 @@ const CarouselVideo = props => {
   const togglePlayStatus = () => {
     if (!videoIsPlaying) {
       video.current.play()
+      console.log('toggle, playing');
+      
     } else {
       video.current.pause()
+      console.log('toggle, pausing');
+      
     }
 
     toggleVideoIsPlaying(!videoIsPlaying)
@@ -52,6 +56,10 @@ const CarouselVideo = props => {
 
   const toggleMuteStatus = () => {
     video.current.muted = video.current.muted ? false : true;
+
+    video.current.muted ? console.log('unmuting') : console.log('muting');
+    ;
+    
 
     toggleVideoIsMuted(!videoIsMuted)
   }

@@ -49,10 +49,8 @@ const Portfolio = props => {
         if (i < carouselVideos.length) {
           const video = sibling.querySelector("video")
 
-          video.pause();
-          video.currentTime = 0;
-
-          console.log('paused', video);
+          // video.pause();
+          // video.currentTime = 0;
         }
       })
     },
