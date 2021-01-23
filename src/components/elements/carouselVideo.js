@@ -10,10 +10,10 @@ const CarouselVideo = props => {
   const [firstLoadDone, setFirstLoadDone] = useState(false);
 
   useEffect(() => {
-    if (!firstLoadDone) {
-      pauseVideo();
-      setFirstLoadDone(true);
-    }
+    // if (!firstLoadDone) {
+    //   pauseVideo();
+    //   setFirstLoadDone(true);
+    // }
     
     if (props.portfolioTriggered && ((props.firstSlide && props.isCurrent) || props.isCurrent)) {
       playVideo();

@@ -42,6 +42,20 @@ const Portfolio = props => {
         <FontAwesomeIcon icon={faChevronLeft}></FontAwesomeIcon>
       </SlickButtonFix>
     ),
+    onInit: function() {
+      let siblings = document.querySelectorAll(".slick-slide");
+
+      siblings.forEach((sibling, i) => {
+        if (i < carouselVideos.length) {
+          const video = sibling.querySelector("video")
+
+          video.pause();
+          video.currentTime = 0;
+
+          console.log('paused', video);
+        }
+      })
+    },
     afterChange: function (index) {
       let siblings = document.querySelectorAll(".slick-slide")
       let current = document.querySelector(".slick-current")
