@@ -49,14 +49,15 @@ const Portfolio = props => {
         if (i < carouselVideos.length) {
           const video = sibling.querySelector("video")
 
-          // video.pause();
-          // video.currentTime = 0;
+          video.pause();
+          video.currentTime = 0;
         }
       })
     },
     afterChange: function (index) {
       let siblings = document.querySelectorAll(".slick-slide")
       let current = document.querySelector(".slick-current")
+console.log('firing');
 
       for (let i = 0; i < siblings.length; i++) {
         siblings[i].style.zIndex = 0
@@ -67,8 +68,8 @@ const Portfolio = props => {
         if (i < carouselVideos.length) {
           const video = sibling.querySelector('video');
           
-          video.pause();
-          video.currentTime = 0;
+          // video.pause();
+          // video.currentTime = 0;
         }
       });
 
