@@ -13,7 +13,7 @@ import SlickButtonFix from '../elements/slickButtonFix';
 
 const Portfolio = props => {
   const carouselSettings = {
-    adaptiveHeight: true,
+    adaptiveHeight: false,
     arrows: true,
     cssEase: "ease-in-out",
     dots: false,
@@ -24,6 +24,14 @@ const Portfolio = props => {
     speed: 1000,
     swipe: false,
     touchMove: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          adaptiveHeight: true,
+        }
+      }
+    ],
     nextArrow: (
       <SlickButtonFix>
         <FontAwesomeIcon icon={faChevronRight}></FontAwesomeIcon>
@@ -151,7 +159,7 @@ export default () => (
   <StaticQuery
     query={graphql`
       query CarouselVideosQuery {
-        allContentfulHomepageCarouselVideo {
+        allContentfulHomepageCarouselVideo ( sort: { fields: [order, updatedAt], order: [ASC, DESC] }) {
           edges {
             node {
               video {

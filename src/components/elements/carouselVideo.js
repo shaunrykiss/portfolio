@@ -9,6 +9,8 @@ const CarouselVideo = props => {
   const [videoIsMuted, toggleVideoIsMuted] = useState(true);
 
   useEffect(() => {
+    pauseVideo();
+    
     if (props.portfolioTriggered && ((props.firstSlide && props.isCurrent) || props.isCurrent)) {
       playVideo();
       unmuteVideo();
@@ -18,6 +20,11 @@ const CarouselVideo = props => {
   const playVideo = () => {
     video.current.play();
     toggleVideoIsPlaying(true);
+  }
+
+  const pauseVideo = () => {
+    video.current.pause();
+    toggleVideoIsPlaying(false);
   }
 
   const unmuteVideo = () => {
@@ -51,7 +58,7 @@ const CarouselVideo = props => {
 
   return (
     <div className="carousel-video">
-      <video playsInline width="100%" ref={video} muted onEnded={videoEnded}>
+      <video autoPlay playsInline width="100%" ref={video} muted onEnded={videoEnded}>
         <source src={props.video.videoUrl} type="video/mp4" />
         <track kind="captions" />
       </video>
