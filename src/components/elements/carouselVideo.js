@@ -7,24 +7,32 @@ const CarouselVideo = props => {
 
   const [videoIsPlaying, toggleVideoIsPlaying] = useState(false);
   const [videoIsMuted, toggleVideoIsMuted] = useState(true);
+  const [firstLoadDone, setFirstLoadDone] = useState(false);
 
   useEffect(() => {
+    if (!firstLoadDone) {
+      pauseVideo();
+      setFirstLoadDone(true);
+    }
+    
     if (props.portfolioTriggered && ((props.firstSlide && props.isCurrent) || props.isCurrent)) {
       playVideo();
       unmuteVideo();
-    } else {
-      pauseVideo();
     }
   }, [props.portfolioTriggered, props.isCurrent]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const playVideo = () => {
     video.current.play();
     toggleVideoIsPlaying(true);
+    console.log(props.video.title, 'playing');
+    
   }
 
   const pauseVideo = () => {
     video.current.pause();
     toggleVideoIsPlaying(false);
+    console.log(props.video.title, 'paused');
+    
   }
 
   const unmuteVideo = () => {
