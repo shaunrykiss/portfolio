@@ -10,10 +10,10 @@ const CarouselVideo = props => {
   const [firstLoadDone, setFirstLoadDone] = useState(false);
 
   useEffect(() => {
-    // if (!firstLoadDone) {
-    //   pauseVideo();
-    //   setFirstLoadDone(true);
-    // }
+    if (!props.isCurrent) {
+      pauseVideo();
+      video.current.currentTime = 0;
+    }
     
     if (props.portfolioTriggered && ((props.firstSlide && props.isCurrent) || props.isCurrent)) {
       playVideo();
@@ -58,8 +58,6 @@ const CarouselVideo = props => {
     video.current.muted = video.current.muted ? false : true;
 
     video.current.muted ? console.log('unmuting') : console.log('muting');
-    ;
-    
 
     toggleVideoIsMuted(!videoIsMuted)
   }
@@ -86,7 +84,6 @@ const CarouselVideo = props => {
         <track kind="captions" />
       </video>
 
-      {/* {props.portfolioTriggered && ( */}
       <div
         className={`carousel-video__overlay-content${
           props.portfolioTriggered ? " active" : ""
@@ -127,7 +124,6 @@ const CarouselVideo = props => {
           <p className="description">{props.video.description}</p>
         </div>
       </div>
-      {/* )} */}
 
       <div
         className={`carousel-video__overlay${

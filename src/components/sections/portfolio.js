@@ -57,21 +57,11 @@ const Portfolio = props => {
     afterChange: function (index) {
       let siblings = document.querySelectorAll(".slick-slide")
       let current = document.querySelector(".slick-current")
-console.log('firing');
 
       for (let i = 0; i < siblings.length; i++) {
         siblings[i].style.zIndex = 0
       }
-      current.style.zIndex = 10
-
-      siblings.forEach((sibling, i) => {
-        if (i < carouselVideos.length) {
-          const video = sibling.querySelector('video');
-          
-          // video.pause();
-          // video.currentTime = 0;
-        }
-      });
+      current.style.zIndex = 10;
 
       updateCurrentSlide(index);
     },
