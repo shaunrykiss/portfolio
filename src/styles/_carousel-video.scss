@@ -2,9 +2,35 @@
   position: relative;
   overflow: hidden;
 
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 10;
+
+    background: rgba(0,0,0,0.5);
+    opacity: 1;
+
+    transition: all 0.3s ease-in-out;
+
+    &.active {
+      opacity: 0;
+      z-index: -1;
+    }
+  }
+
   &__overlay-content {
+    display: none;
+    
     background: linear-gradient(to bottom, black, transparent);
     padding: 10px;
+
+    &.active {
+      display: block;
+    }
   }
 
   &__controls {
@@ -140,26 +166,6 @@
       .title {
         font-size: 3rem;
         text-shadow: 0 0 18px rgba(0,0,0,1);
-      }
-    }
-
-    &__overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-
-      z-index: 10;
-
-      background: rgba(0,0,0,0.6);
-      opacity: 1;
-
-      transition: all 0.3s ease-in-out;
-
-      &.active {
-        opacity: 0;
-        z-index: -1;
       }
     }
   }

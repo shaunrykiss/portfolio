@@ -87,10 +87,7 @@ const Portfolio = props => {
 
   const triggerPortfolio = () => {
     setPortfolioTriggered(true)
-    triggerButton.current.style.opacity = 0
-    setTimeout(() => {
-      triggerButton.current.style.display = "none"
-    }, 400);
+    triggerButton.current.style.display = 'none';
   }
 
   const handleVideoEnd = (restarting) => {
