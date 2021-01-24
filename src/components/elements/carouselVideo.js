@@ -1,80 +1,114 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useLayoutEffect, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faPause, faVolumeUp, faVolumeMute, faExpand } from "@fortawesome/free-solid-svg-icons";
 
-const CarouselVideo = props => {
-  const video = useRef("");
+import { slugify } from '../../utilities/helper-functions';
 
-  const [videoIsPlaying, toggleVideoIsPlaying] = useState(false);
-  const [videoIsMuted, toggleVideoIsMuted] = useState(true);
-  const [autoplayProp, setAutoplayProp] = useState({});
+const CarouselVideo = props => {
+  // const video = useRef("");
+
+  const [video, setVideo] = useState("")
+  const [videoIsPlaying, toggleVideoIsPlaying] = useState(false)
+  const [videoIsMuted, toggleVideoIsMuted] = useState(true)
+  const [autoplayProp, setAutoplayProp] = useState({})
 
   useEffect(() => {
     if (props.portfolioTriggered && props.isCurrent) {
       setAutoplayProp({
-        autoPlay: 'autoPlay'
-      });
+        autoPlay: "autoPlay",
+      })
     } else {
-      setAutoplayProp({});
+      setAutoplayProp({})
     }
-    
-    if (!props.isCurrent) {
-      pauseVideo();
-      video.current.currentTime = 0;
+
+    if (video && !props.isCurrent) {
+      pauseVideo()
+      // video.current.currentTime = 0;
+      video.currentTime = 0
     }
-    
-    if (props.portfolioTriggered && ((props.firstSlide && props.isCurrent) || props.isCurrent)) {
-      playVideo();
-      unmuteVideo();
+
+    if (
+      props.portfolioTriggered &&
+      ((props.firstSlide && props.isCurrent) || props.isCurrent)
+    ) {
+      playVideo()
+      unmuteVideo()
     }
   }, [props.portfolioTriggered, props.isCurrent]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  useLayoutEffect(() => {
+    const currentVideo = document.getElementById(slugify(props.video.title))
+    setVideo(currentVideo)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
   const playVideo = () => {
-    video.current.play();
-    toggleVideoIsPlaying(true);
-    console.log(props.video.title, 'playing');
+    // video.current.play();
+    console.log("playVideo called")
+
+    if (video) {
+      video.play();
+      toggleVideoIsPlaying(true);
+      console.log(props.video.title, "playing")
+    }
   }
 
   const pauseVideo = () => {
-    video.current.pause();
-    toggleVideoIsPlaying(false);
-    console.log(props.video.title, 'paused');
-    
+    // video.current.pause();
+    console.log("pauseVideo called")
+
+    if (video) {
+      video.pause()
+      toggleVideoIsPlaying(false)
+      console.log(props.video.title, "paused")
+    }
   }
 
   const unmuteVideo = () => {
-    video.current.muted = false;
-    toggleVideoIsMuted(false);
-  }
-  
-  const togglePlayStatus = () => {
-    if (!videoIsPlaying) {
-      video.current.play()
-      console.log('toggle, playing');
-      
-    } else {
-      video.current.pause()
-      console.log('toggle, pausing');
-      
+    // video.current.muted = false;
+    if (video) {
+      video.muted = false
+      toggleVideoIsMuted(false)
     }
+  }
 
-    toggleVideoIsPlaying(!videoIsPlaying)
+  const togglePlayStatus = () => {    
+    if (video) {
+      if (!videoIsPlaying) {
+        // video.current.play()
+        video.play()
+        console.log("toggle, playing")
+      } else {
+        // video.current.pause()
+        video.pause()
+        console.log("toggle, pausing")
+      }
+
+      toggleVideoIsPlaying(!videoIsPlaying)
+    }
   }
 
   const toggleMuteStatus = () => {
-    video.current.muted = video.current.muted ? false : true;
+    // video.current.muted = video.current.muted ? false : true;
+    if (video) {
+      video.muted = video.muted ? false : true
 
-    video.current.muted ? console.log('unmuting') : console.log('muting');
+      video.muted ? console.log("unmuting") : console.log("muting")
 
-    toggleVideoIsMuted(!videoIsMuted)
+      // video.current.muted ? console.log('unmuting') : console.log('muting');
+
+      toggleVideoIsMuted(!videoIsMuted)
+    }
   }
 
   const toggleFullScreenStatus = () => {
-    video.current.requestFullscreen();
+    // video.current.requestFullscreen();
+    if (video) {
+      video.requestFullscreen()
+    }
   }
 
   const videoEnded = () => {
-    props.handleVideoEnd(props.lastSlide);
+    props.handleVideoEnd(props.lastSlide)
   }
 
   return (
@@ -83,11 +117,12 @@ const CarouselVideo = props => {
         {...autoplayProp}
         playsInline
         width="100%"
-        ref={video}
         muted
         onEnded={videoEnded}
+        id={slugify(props.video.title)}
+        src={props.video.videoUrl}
       >
-        <source src={props.video.videoUrl} type="video/mp4" />
+        {/* <source src={props.video.videoUrl} type="video/mp4" /> */}
         <track kind="captions" />
       </video>
 
