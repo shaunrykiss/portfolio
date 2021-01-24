@@ -10,7 +10,7 @@ import "../../styles/globals/_modal.css";
 
 import WorkItem from '../elements/workItem';
 
-import { slugify, listify } from '../../utilities/helper-functions';
+import { slugify } from '../../utilities/helper-functions';
 
 const Works = props => {
   const [worksCategories, setWorksCategories] = useState([]);
@@ -139,139 +139,61 @@ const Works = props => {
             }}
           >
             {/* <WorkItem item={selectedItem} closeModal={closeModal}></WorkItem> */}
-            <div className="work-item">
-              {/* {itemHasVideo && (
-                <div className="work-item__loader-overlay" ref={loader}>
-                  <Loader type="TailSpin" color="#1B83EA"></Loader>
-                </div>
-              )} */}
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Quibusdam esse asperiores excepturi officia sit enim nemo iste,
+              corrupti quisquam porro nobis ipsam eligendi id, quasi veniam,
+              repellat itaque cum debitis.
+            </p>
 
-              {/* {media} */}
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Quibusdam esse asperiores excepturi officia sit enim nemo iste,
+              corrupti quisquam porro nobis ipsam eligendi id, quasi veniam,
+              repellat itaque cum debitis.
+            </p>
 
-              <div className="work-item__content">
-                <button className="work-item__close" onClick={closeModal}>
-                  {/* <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon> */}
-                  close
-                </button>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Quibusdam esse asperiores excepturi officia sit enim nemo iste,
+              corrupti quisquam porro nobis ipsam eligendi id, quasi veniam,
+              repellat itaque cum debitis.
+            </p>
 
-                <h2 id={"slugify(selectedItem.title)"} className="work-item__title">
-                  {selectedItem.title}
-                  {selectedItem.status && (
-                    <span className="work-item__status">
-                      ({selectedItem.status})
-                    </span>
-                  )}
-                </h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Quibusdam esse asperiores excepturi officia sit enim nemo iste,
+              corrupti quisquam porro nobis ipsam eligendi id, quasi veniam,
+              repellat itaque cum debitis.
+            </p>
 
-                {selectedItem.genre && (
-                  <p className="work-item__genre">{selectedItem.genre}</p>
-                )}
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Quibusdam esse asperiores excepturi officia sit enim nemo iste,
+              corrupti quisquam porro nobis ipsam eligendi id, quasi veniam,
+              repellat itaque cum debitis.
+            </p>
 
-                <div className="work-item__time-info">
-                  <div className="work-item__year">
-                    {/* <FontAwesomeIcon icon={faCalendarAlt}></FontAwesomeIcon> */}
-                    <p>{`${selectedItem.startingYear}${
-                      selectedItem.endingYear ? ` - ${selectedItem.endingYear}` : ""
-                    }`}</p>
-                  </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Quibusdam esse asperiores excepturi officia sit enim nemo iste,
+              corrupti quisquam porro nobis ipsam eligendi id, quasi veniam,
+              repellat itaque cum debitis.
+            </p>
 
-                  {selectedItem.runningTime && (
-                    <>
-                      <div className="work-item__runtime">
-                        {/* <FontAwesomeIcon icon={faClock}></FontAwesomeIcon> */}
-                        <p>{selectedItem.runningTime}</p>
-                      </div>
-                    </>
-                  )}
-                </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Quibusdam esse asperiores excepturi officia sit enim nemo iste,
+              corrupti quisquam porro nobis ipsam eligendi id, quasi veniam,
+              repellat itaque cum debitis.
+            </p>
 
-                {/* {itemHasCredits && ( */}
-                  <div className="work-item__credits">
-                    <div className="work-item__credits-header">
-                      <h3>Credits</h3>
-
-                      {selectedItem.imdbLink && (
-                        <a
-                          target="_blank"
-                          rel="noreferrer"
-                          className="work-item__imdb-link"
-                          href={selectedItem.imdbLink}
-                        >
-                          {/* <FontAwesomeIcon icon={faImdb}></FontAwesomeIcon> */}
-                          imdb
-                        </a>
-                      )}
-                    </div>
-
-                    {selectedItem.directors && (
-                      <div className="work-item__credit-category">
-                        <h4>
-                          {selectedItem.directors.length > 1
-                            ? "Directors"
-                            : "Director"}
-                        </h4>
-                        <p>{listify(selectedItem.directors)}</p>
-                      </div>
-                    )}
-
-                    {selectedItem.writers && (
-                      <div className="work-item__credit-category">
-                        <h4>
-                          {selectedItem.writers.length > 1 ? "Writers" : "Writer"}
-                        </h4>
-                        <p>{listify(selectedItem.writers)}</p>
-                      </div>
-                    )}
-
-                    {selectedItem.executiveProducers && (
-                      <div className="work-item__credit-category">
-                        <h4>
-                          {selectedItem.executiveProducers.length > 1
-                            ? "Executive Producers"
-                            : "Executive Producer"}
-                        </h4>
-                        <p>{listify(selectedItem.executiveProducers)}</p>
-                      </div>
-                    )}
-
-                    {selectedItem.producers && (
-                      <div className="work-item__credit-category">
-                        <h4>
-                          {selectedItem.producers.length > 1
-                            ? "Producers"
-                            : "Producer"}
-                        </h4>
-                        <p>{listify(selectedItem.producers)}</p>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {/* {itemHasProductionInfo && ( */}
-                  <div className="work-item__production-info">
-                    {selectedItem.production && (
-                      <div className="work-item__production-category">
-                        <h4>Production</h4>
-                        <p>{selectedItem.production}</p>
-                      </div>
-                    )}
-
-                    {selectedItem.network && (
-                      <div className="work-item__production-category">
-                        <h4>Network</h4>
-                        <p>{selectedItem.network}</p>
-                      </div>
-                    )}
-                  </div>
-                {/* )} */}
-
-                {selectedItem.description && (
-                  <p className="work-item__description">
-                    {selectedItem.description.internal.content}
-                  </p>
-                )}
-              </div>
-            </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Quibusdam esse asperiores excepturi officia sit enim nemo iste,
+              corrupti quisquam porro nobis ipsam eligendi id, quasi veniam,
+              repellat itaque cum debitis.
+            </p>
           </Modal>
         </section>
       </Scene>
