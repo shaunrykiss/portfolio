@@ -11,12 +11,19 @@
 
     z-index: 10;
 
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.8);
     opacity: 1;
 
     transition: all 0.3s ease-in-out;
 
     &.active {
+      @include media-md {
+        opacity: 0;
+        z-index: -1;
+      }
+    }
+
+    &.active-small {
       opacity: 0;
       z-index: -1;
     }
@@ -30,6 +37,32 @@
 
     &.active {
       display: block;
+    }
+  }
+
+  &__container {
+    position: relative;
+  }
+
+  &__play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+
+    border: none;
+    background: none;
+
+    color: $accent;
+    font-size: 4rem;
+
+    @include media-md {
+      display: none;
+    }
+
+    &.hide {
+      display: none;
     }
   }
 

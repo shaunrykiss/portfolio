@@ -4,6 +4,8 @@
   align-items: center;
   justify-content: center;
 
+  position: relative;
+
   padding-top: 84px;
   
   background: $black;
@@ -58,7 +60,8 @@
       font-size: 3rem;
     }
 
-    .fa-play {
+    .fa-play,
+    .fa-play-circle {
       color: $accent;
       font-size: 3rem;
 
@@ -70,13 +73,28 @@
       }
     }
 
+    .fa-play {
+      display: none;
+      
+      @include media-md {
+        display: block;
+      }
+    }
+
+    .fa-play-circle {
+      @include media-md {
+        display: none;
+      }
+    }
+
     span {
       color: $white;
       text-shadow: 0 0 8px rgba(0,0,0,1);
     }
 
     &:hover {
-      .fa-play {
+      .fa-play,
+      .fa-play-circle {
         transform: scale(1.1);
       }
     }

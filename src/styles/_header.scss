@@ -92,6 +92,12 @@
     @include media-height-sm {
       margin-bottom: 30px;
     }
+
+    &.hamburger-only {
+      @include media-sm {
+        display: none;
+      }
+    }
   }
 
   .logo-item {

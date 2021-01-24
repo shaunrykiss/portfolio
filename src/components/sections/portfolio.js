@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Slider from "react-slick";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { faPlay, faPlayCircle, faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 import { Controller, Scene } from "react-scrollmagic"
 
@@ -82,6 +82,7 @@ const Portfolio = props => {
         videoUrl: video.node.video.file.url,
         title: video.node.title,
         description: video.node.description,
+        poster: video.node.posterImage.file.url
       })
     )
 
@@ -115,7 +116,9 @@ const Portfolio = props => {
         reverse="true"
       >
         <section
-          className={`portfolio${portfolioTriggered ? " portfolio-active" : ""}`}
+          className={`portfolio${
+            portfolioTriggered ? " portfolio-active" : ""
+          }`}
           id="portfolio"
         >
           <div className="wrapper">
@@ -133,17 +136,18 @@ const Portfolio = props => {
                   />
                 ))}
               </Slider>
-    
+              
               <button
                 className="portfolio__trigger-button"
                 onClick={triggerPortfolio}
                 ref={triggerButton}
               >
+                <FontAwesomeIcon icon={faPlayCircle}></FontAwesomeIcon>
                 <FontAwesomeIcon icon={faPlay}></FontAwesomeIcon>
                 <span>View Portfolio</span>
               </button>
             </div>
-    
+
             <div className="portfolio__title">
               <h1>Shaun Rykiss</h1>
               <h2>Editor</h2>
@@ -169,6 +173,11 @@ export default () => (
               }
               title
               description
+              posterImage {
+                file {
+                  url
+                }
+              }
             }
           }
         }

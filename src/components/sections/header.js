@@ -37,10 +37,16 @@ const Header = () => {
         ></div>
 
         <ul className={`header__nav-list${navIsOpen ? " open" : ""}`}>
+          <li className="header__nav-item hamburger-only">
+            <AnchorLink href="#home" className="header__nav-link">
+              Home
+            </AnchorLink>
+          </li>
+
           <li
             className="header__nav-item"
             onClick={() => toggleNavIsOpen(false)}
-          > 
+          >
             <AnchorLink href="#about" offset="64" className="header__nav-link">
               About
             </AnchorLink>
