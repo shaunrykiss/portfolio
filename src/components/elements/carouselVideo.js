@@ -7,9 +7,17 @@ const CarouselVideo = props => {
 
   const [videoIsPlaying, toggleVideoIsPlaying] = useState(false);
   const [videoIsMuted, toggleVideoIsMuted] = useState(true);
-  const [firstLoadDone, setFirstLoadDone] = useState(false);
+  const [autoplayProp, setAutoplayProp] = useState({});
 
   useEffect(() => {
+    if (props.portfolioTriggered && props.isCurrent) {
+      setAutoplayProp({
+        autoPlay: 'autoPlay'
+      });
+    } else {
+      setAutoplayProp({});
+    }
+    
     if (!props.isCurrent) {
       pauseVideo();
       video.current.currentTime = 0;
@@ -25,7 +33,6 @@ const CarouselVideo = props => {
     video.current.play();
     toggleVideoIsPlaying(true);
     console.log(props.video.title, 'playing');
-    
   }
 
   const pauseVideo = () => {
@@ -73,7 +80,7 @@ const CarouselVideo = props => {
   return (
     <div className="carousel-video">
       <video
-        autoPlay
+        {...autoplayProp}
         playsInline
         width="100%"
         ref={video}
