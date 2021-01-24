@@ -41,7 +41,9 @@ const CarouselVideo = props => {
 
   const triggerVideo = () => {
     playVideo();
-    unmuteVideo();
+
+    toggleMuteStatus();  
+    
     setVideoIsTriggered(true);
   }
 
