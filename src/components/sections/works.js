@@ -138,62 +138,7 @@ const Works = props => {
               closeButton: "work-item-modal__close",
             }}
           >
-            {/* <WorkItem item={selectedItem} closeModal={closeModal}></WorkItem> */}
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Quibusdam esse asperiores excepturi officia sit enim nemo iste,
-              corrupti quisquam porro nobis ipsam eligendi id, quasi veniam,
-              repellat itaque cum debitis.
-            </p>
-
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Quibusdam esse asperiores excepturi officia sit enim nemo iste,
-              corrupti quisquam porro nobis ipsam eligendi id, quasi veniam,
-              repellat itaque cum debitis.
-            </p>
-
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Quibusdam esse asperiores excepturi officia sit enim nemo iste,
-              corrupti quisquam porro nobis ipsam eligendi id, quasi veniam,
-              repellat itaque cum debitis.
-            </p>
-
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Quibusdam esse asperiores excepturi officia sit enim nemo iste,
-              corrupti quisquam porro nobis ipsam eligendi id, quasi veniam,
-              repellat itaque cum debitis.
-            </p>
-
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Quibusdam esse asperiores excepturi officia sit enim nemo iste,
-              corrupti quisquam porro nobis ipsam eligendi id, quasi veniam,
-              repellat itaque cum debitis.
-            </p>
-
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Quibusdam esse asperiores excepturi officia sit enim nemo iste,
-              corrupti quisquam porro nobis ipsam eligendi id, quasi veniam,
-              repellat itaque cum debitis.
-            </p>
-
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Quibusdam esse asperiores excepturi officia sit enim nemo iste,
-              corrupti quisquam porro nobis ipsam eligendi id, quasi veniam,
-              repellat itaque cum debitis.
-            </p>
-
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Quibusdam esse asperiores excepturi officia sit enim nemo iste,
-              corrupti quisquam porro nobis ipsam eligendi id, quasi veniam,
-              repellat itaque cum debitis.
-            </p>
+            <WorkItem item={selectedItem} closeModal={closeModal}></WorkItem>
           </Modal>
         </section>
       </Scene>
