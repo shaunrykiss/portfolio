@@ -63,8 +63,6 @@ const CarouselVideo = props => {
     } else {
       pauseVideo();
     }
-
-    // toggleVideoIsPlaying(!videoIsPlaying)
   }
 
   const toggleMuteStatus = () => {

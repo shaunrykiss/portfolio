@@ -1,5 +1,5 @@
 .work-item {
-  position: relative;
+  // position: relative;
 
   background: rgba(0,0,0,1);
 
@@ -85,7 +85,12 @@
 
     border-radius: 4px;
 
-    transition: color 0.2s ease-in-out;
+    @include media-md {
+      &:hover {
+        color: $black;
+        background: radial-gradient(#FAC800 51%, $white 28%);
+      }
+    }
 
     .fa-imdb {
       position: relative;
@@ -175,6 +180,11 @@
 
     p {
       font-size: 1.4rem;
+      text-align: right;
+
+      @include media-sm {
+        text-align: left;
+      }
     }
   }
 
