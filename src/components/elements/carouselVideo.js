@@ -9,7 +9,7 @@ const CarouselVideo = props => {
 
   const [videoIsTriggered, setVideoIsTriggered] = useState(false);
   const [videoIsPlaying, toggleVideoIsPlaying] = useState(false)
-  const [videoIsMuted, toggleVideoIsMuted] = useState(true)
+  const [videoIsMuted, toggleVideoIsMuted] = useState(false)
   const [screenIsSmall, setScreenIsSmall] = useState(window.innerWidth < 768);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const CarouselVideo = props => {
   const triggerVideo = () => {
     playVideo();
 
-    toggleMuteStatus();  
+    unmuteVideo();  
     
     setVideoIsTriggered(true);
   }
@@ -68,9 +68,8 @@ const CarouselVideo = props => {
   }
 
   const toggleMuteStatus = () => {
-    video.current.muted = video.current.muted ? false : true;
-
     video.current.muted ? console.log('unmuting') : console.log('muting');
+    video.current.muted = video.current.muted ? false : true;
 
     toggleVideoIsMuted(!videoIsMuted)
   }
@@ -95,7 +94,6 @@ const CarouselVideo = props => {
         <video
           playsInline
           width="100%"
-          muted
           onEnded={videoEnded}
           id={slugify(props.video.title)}
           ref={video}
