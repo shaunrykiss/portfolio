@@ -1,7 +1,6 @@
 
 /* Work Item Modal */
 .work-item-modal {
-  /* max-height: 90vh; */
   width: 640px;
   background: transparent;
 }
@@ -39,7 +38,6 @@
   .contact-form__modal {
     padding: 0;
     margin: 0;
-    /* max-height: 80vh; */
     width: 90vw;
   }
 

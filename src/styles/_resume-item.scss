@@ -75,6 +75,7 @@
 
   &__credit-category {
     display: flex;
+    justify-content: space-between;
 
     @include media-sm {
       display: grid;
@@ -97,9 +98,15 @@
     }
 
     li {
+      margin-bottom: 2px;
+
+      text-align: right;
       font-weight: 600;
       font-size: 1.4rem;
-      margin-bottom: 2px;
+
+      @include media-sm {
+        text-align: left;
+      }
     }
   }
 }

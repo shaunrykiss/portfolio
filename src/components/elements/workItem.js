@@ -46,12 +46,14 @@ const WorkItem = props => {
           <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>
         </button>
 
-        <h2 id={slugify(props.item.title)} className="work-item__title">
-          {props.item.title}
+        <div className="work-item__header">
+          <h2 id={slugify(props.item.title)} className="work-item__title">
+            {props.item.title}
+          </h2>
           {props.item.status && (
             <span className="work-item__status">({props.item.status})</span>
           )}
-        </h2>
+        </div>
 
         {props.item.genre && (
           <p className="work-item__genre">{props.item.genre}</p>
@@ -79,7 +81,7 @@ const WorkItem = props => {
           <div className="work-item__credits">
             <div className="work-item__credits-header">
               <h3>Credits</h3>
-  
+
               {props.item.imdbLink && (
                 <a
                   target="_blank"

@@ -118,6 +118,14 @@
       transition: transform 0.4s ease-in-out;
     }
 
+    @include media-md {
+       &:hover {
+        &::before {
+          transform: scaleX(1);
+        }
+      }
+    }
+
     &.active-tab {
       &::before {
         transform: scale(1);
