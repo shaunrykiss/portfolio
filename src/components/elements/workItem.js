@@ -151,9 +151,13 @@ const WorkItem = props => {
         )}
 
         {props.item.description && (
-          <p className="work-item__description">
-            {props.item.description.internal.content}
-          </p>
+          <div className="work-item__description">
+            <h3>Description</h3>
+            
+            <p className="work-item__description-content">
+              {props.item.description.internal.content}
+            </p>
+          </div>
         )}
       </div>
     </div>

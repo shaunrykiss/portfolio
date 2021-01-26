@@ -19,15 +19,13 @@
     bottom: 0;
     right: 0;
 
+    max-height: 100vh;
+
     background: $white;
 
     opacity: 1;
     z-index: 1;
     transition: opacity 0.6s ease-in-out, z-index 0s 0.6s;
-
-    @include media-md {
-      max-height: 90vh;
-    }
   }
 
   &__content {
@@ -87,7 +85,7 @@
     margin-bottom: 4px;
     
     color: #FAC800;
-    background: radial-gradient($black 51%, $white 28%);
+    background: radial-gradient($black 49%, $white 28%);
 
     border-radius: 4px;
 
@@ -167,7 +165,7 @@
     display: flex;
     justify-content: space-between;
 
-    margin-bottom: 2px;
+    margin-bottom: 5px;
 
     font-family: $accentFont;
 
@@ -190,6 +188,10 @@
   }
 
   &__description {
+    margin-top: 22px;
+  }
+
+  &__description-content {
     margin-top: 20px;
     font-family: $accentFont;
     white-space: pre-wrap;

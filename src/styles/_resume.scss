@@ -2,6 +2,10 @@
   @include media-sm {
     padding-top: 40px;
   }
+
+  .parallax-outer {
+    top: 150px;
+  }
   
   .parallax-heading {
     &::before {
@@ -38,7 +42,6 @@
 
   &__categories-container {
     position: relative;
-    padding-right: 30px;
 
     &::before {
       content: '>';
@@ -49,7 +52,9 @@
       transform: translateY(-50%);
       z-index: 10;
 
-      padding: 0 3px 0 20px;
+      padding: 0 3px 0 25px;
+
+      background: linear-gradient(to right, rgba($white, 0) 3%, rgba($white, 1) 55%);
 
       font-size: 3rem;
       font-weight: 200;

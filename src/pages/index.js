@@ -11,6 +11,8 @@ import Resume from '../components/sections/resume';
 import Contact from '../components/sections/contact';
 
 export default ({ data }) => {  
+  document.addEventListener("touchstart", function () {}, false);
+  
   const socialLinks = Object.values(
     data.allContentfulSocialMediaLinkLinkListJsonNode.edges[0].node
   );

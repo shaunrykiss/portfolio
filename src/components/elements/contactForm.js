@@ -53,7 +53,7 @@ const ContactForm = props => {
           placeholder="Message"
         ></textarea>
 
-        <button type="submit" className="send">
+        <button type="submit" className="send" onClick={props.onClose}>
           Send
         </button>
       </form>

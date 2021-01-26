@@ -5,6 +5,12 @@ export const parallaxStyle = {
   right: "-30%",
 };
 
+export const parallaxStyleResume = {
+  position: "absolute",
+  top: "150px",
+  right: "-30%",
+}
+
 export const slugify = (string) => string.toLowerCase().split('-').join('').split(' ').join('-');
 
 export const listify = (arr) => {

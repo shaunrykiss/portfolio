@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect } from "react"
 import { StaticQuery, graphql } from "gatsby";
 
-import { parallaxStyle } from '../../utilities/helper-functions';
+import { parallaxStyle, parallaxStyleResume } from '../../utilities/helper-functions';
 
 import { Parallax } from "react-scroll-parallax";
 import { Controller, Scene } from "react-scrollmagic";
@@ -22,10 +22,18 @@ const Resume = props => {
 
   const [containerHeight, setContainerHeight] = useState(0)
 
+  const [categoriesAreScrolling, setCategoriesAreScrolling] = useState(false);
+
   useEffect(() => {
     sortResumeItems();
 
-    window.addEventListener("resize", () => getContainerHeight()) 
+    window.addEventListener("resize", () => {
+      getContainerHeight();
+
+      if (window.innerWidth < 993) {
+        setCategoriesAreScrolling(true);
+      }
+    }) 
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   useLayoutEffect(() => {
@@ -100,7 +108,7 @@ const Resume = props => {
             <Parallax
               className="parallax"
               x={[80, -50]}
-              styleOuter={parallaxStyle}
+              styleOuter={categoriesAreScrolling ? parallaxStyleResume : parallaxStyle}
             >
               <div className="parallax-heading"></div>
             </Parallax>

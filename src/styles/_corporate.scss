@@ -99,6 +99,10 @@
 
     transition: all 0.27s cubic-bezier(0.000, 0.000, 0.580, 1.00);
 
+    &:active {
+      color: $accent;
+    }
+
     @include media-lg {
       font-size: 2rem;
       opacity: 0;
