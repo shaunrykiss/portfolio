@@ -1,7 +1,6 @@
 
 export const parallaxStyle = {
   position: "absolute",
-  zIndex: -1,
   top: "45px",
   right: "-30%",
 };

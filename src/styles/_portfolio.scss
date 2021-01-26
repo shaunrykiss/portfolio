@@ -132,6 +132,10 @@
 
     @include media-sm {
       bottom: 26px;
+
+      &:active {
+        color: $accent;
+      }
     }
 
     @include media-md {

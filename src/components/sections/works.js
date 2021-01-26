@@ -105,9 +105,8 @@ const Works = props => {
 
               <div className="works__grid">
                 {workItems.map((item, i) => (
-                  <a
+                  <button
                     className={`works__item active`}
-                    href="/"
                     data-category={slugify(item.category)}
                     key={i}
                     onClick={e => handleItemClick(e, item)}
@@ -121,7 +120,7 @@ const Works = props => {
                       </div>
                       <p className="sr-only">Learn More</p>
                     </div>
-                  </a>
+                  </button>
                 ))}
               </div>
             </div>

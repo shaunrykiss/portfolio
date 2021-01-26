@@ -31,7 +31,7 @@
       font-size: 3rem;
       font-weight: 200;
 
-      background: $black;
+      background: linear-gradient(to right, rgba($black, 0), rgba($black, 1) 52%);
     }
 
     @include media-md {
@@ -142,6 +142,9 @@
     opacity: 0;
     width: 0;
     margin: 0;
+
+    background: none;
+    border: none;
 
     transition: opacity 0.3s ease, width 0s 0.3s, margin 0s 0.3s;
 

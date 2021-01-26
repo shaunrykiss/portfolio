@@ -14,7 +14,7 @@ const Footer = ({ socialLinks }) => {
   
   return (
     <footer className="footer">
-      <div className="wrapper footer__container">
+      <div className="footer__container">
         <p className="footer__copyright">
           <span>©</span> Shaun Rykiss {currentYear}
         </p>

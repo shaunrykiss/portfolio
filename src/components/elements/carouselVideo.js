@@ -9,7 +9,6 @@ const CarouselVideo = props => {
 
   const [videoIsTriggered, setVideoIsTriggered] = useState(false);
   const [videoIsPlaying, toggleVideoIsPlaying] = useState(false)
-  const [videoIsMuted, toggleVideoIsMuted] = useState(false)
   const [screenIsSmall, setScreenIsSmall] = useState(window.innerWidth < 768);
 
   useEffect(() => {
@@ -29,11 +28,18 @@ const CarouselVideo = props => {
       ((props.firstSlide && props.isCurrent) || props.isCurrent)
     ) {
       playVideo()
-      unmuteVideo()
+
+      if (!props.portfolioMuted) {
+        unmuteVideo();
+      }
     }
   }, [props.portfolioTriggered, props.isCurrent]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const playVideo = () => {
+    if (props.portfolioMuted) {
+      video.current.muted = true;
+    }
+    
     video.current.play();
     toggleVideoIsPlaying(true);
     setVideoIsTriggered(true);
@@ -54,7 +60,7 @@ const CarouselVideo = props => {
 
   const unmuteVideo = () => {
     video.current.muted = false;
-    toggleVideoIsMuted(false)
+    props.setPortfolioMuted(false);
   }
 
   const togglePlayStatus = () => {    
@@ -66,10 +72,13 @@ const CarouselVideo = props => {
   }
 
   const toggleMuteStatus = () => {
-    video.current.muted ? console.log('unmuting') : console.log('muting');
-    video.current.muted = video.current.muted ? false : true;
-
-    toggleVideoIsMuted(!videoIsMuted)
+    if (video.current.muted) {
+      video.current.muted = false;
+      props.setPortfolioMuted(false);
+    } else {
+      video.current.muted = true;
+      props.setPortfolioMuted(true);
+    }
   }
 
   const toggleFullScreenStatus = () => {
@@ -130,10 +139,10 @@ const CarouselVideo = props => {
           <div className="carousel-video__toggles">
             <button className="mute-toggle" onClick={toggleMuteStatus}>
               <FontAwesomeIcon
-                icon={videoIsMuted ? faVolumeUp : faVolumeMute}
+                icon={props.portfolioMuted ? faVolumeUp : faVolumeMute}
               ></FontAwesomeIcon>
               <span className="sr-only">
-                {videoIsMuted ? "Unmute Video" : "Mute Video"}
+                {props.portfolioMuted ? "Unmute Video" : "Mute Video"}
               </span>
             </button>
 

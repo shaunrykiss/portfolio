@@ -13,7 +13,7 @@ import SlickButtonFix from '../elements/slickButtonFix';
 
 const Portfolio = props => {
   const carouselSettings = {
-    adaptiveHeight: true,
+    adaptiveHeight: false,
     arrows: true,
     cssEase: "ease-in-out",
     dots: false,
@@ -71,7 +71,11 @@ const Portfolio = props => {
 
   const [portfolioTriggered, setPortfolioTriggered] = useState(false);
 
+  const [portfolioMuted, setPortfolioMuted] = useState(true);
+
   const [currentSlide, updateCurrentSlide] = useState(0);
+
+  const [portfolioHasRestarted, setPortfolioHasRestarted] = useState(false);
 
   const triggerButton = useRef('');
   const slider = useRef('');
@@ -90,8 +94,14 @@ const Portfolio = props => {
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const triggerPortfolio = () => {
-    setPortfolioTriggered(true)
+    setPortfolioTriggered(true);
     triggerButton.current.style.display = 'none';
+
+    if (portfolioHasRestarted) {
+      setPortfolioMuted(portfolioMuted);
+    } else {
+      setPortfolioMuted(false);
+    }
   }
 
   const handleVideoEnd = (restarting) => {
@@ -99,6 +109,7 @@ const Portfolio = props => {
 
     if (restarting) {
       setPortfolioTriggered(false);
+      setPortfolioHasRestarted(true);
       triggerButton.current.style.display = 'flex';
       setTimeout(() => {
         triggerButton.current.style.opacity = 1;
@@ -132,6 +143,8 @@ const Portfolio = props => {
                     isCurrent={i === currentSlide}
                     video={video}
                     portfolioTriggered={portfolioTriggered}
+                    portfolioMuted={portfolioMuted}
+                    setPortfolioMuted={setPortfolioMuted}
                     handleVideoEnd={handleVideoEnd}
                   />
                 ))}
