@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Slider from "react-slick";
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import Slider from 'react-slick';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPlayCircle, faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
-import { Controller, Scene } from "react-scrollmagic"
+import Loader from 'react-loader-spinner';
+
+import { Controller, Scene } from 'react-scrollmagic';
 
 import { StaticQuery, graphql } from 'gatsby';
 
@@ -29,8 +31,8 @@ const Portfolio = props => {
         breakpoint: 768,
         settings: {
           adaptiveHeight: true,
-        }
-      }
+        },
+      },
     ],
     nextArrow: (
       <SlickButtonFix>
@@ -42,15 +44,15 @@ const Portfolio = props => {
         <FontAwesomeIcon icon={faChevronLeft}></FontAwesomeIcon>
       </SlickButtonFix>
     ),
-    onInit: function() {
-      let siblings = document.querySelectorAll(".slick-slide");
+    onInit: function () {
+      let siblings = document.querySelectorAll(".slick-slide")
 
       siblings.forEach((sibling, i) => {
         if (i < carouselVideos.length) {
           const video = sibling.querySelector("video")
 
-          video.pause();
-          video.currentTime = 0;
+          video.pause()
+          video.currentTime = 0
         }
       })
     },
@@ -61,9 +63,9 @@ const Portfolio = props => {
       for (let i = 0; i < siblings.length; i++) {
         siblings[i].style.zIndex = 0
       }
-      current.style.zIndex = 10;
+      current.style.zIndex = 10
 
-      updateCurrentSlide(index);
+      updateCurrentSlide(index)
     },
   }
 
@@ -77,8 +79,12 @@ const Portfolio = props => {
 
   const [portfolioHasRestarted, setPortfolioHasRestarted] = useState(false);
 
-  const triggerButton = useRef('');
-  const slider = useRef('');
+  const [loadedVideos, updateLoadedVideos] = useState([]);
+
+  const [portfolioLoaded, setPortfolioLoaded] = useState(false);
+
+  const triggerButton = useRef("");
+  const slider = useRef("");
 
   useEffect(() => {
     const videos = props.data.allContentfulHomepageCarouselVideo.edges.map(
@@ -86,34 +92,44 @@ const Portfolio = props => {
         videoUrl: video.node.video.file.url,
         title: video.node.title,
         description: video.node.description,
-        poster: video.node.posterImage.file.url
+        poster: video.node.posterImage.file.url,
       })
     )
 
     setCarouselVideos(videos)
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
+  useLayoutEffect(() => {
+    if (carouselVideos.length) {
+      const allVideosLoaded = carouselVideos.every(video => loadedVideos.includes(video.title));
+
+      if (allVideosLoaded) {
+        setPortfolioLoaded(true);
+      }
+    }
+  }, [carouselVideos, loadedVideos]) // eslint-disable-line react-hooks/exhaustive-deps
+
   const triggerPortfolio = () => {
-    setPortfolioTriggered(true);
-    triggerButton.current.style.display = 'none';
+    setPortfolioTriggered(true)
+    triggerButton.current.style.display = "none"
 
     if (portfolioHasRestarted) {
-      setPortfolioMuted(portfolioMuted);
+      setPortfolioMuted(portfolioMuted)
     } else {
-      setPortfolioMuted(false);
+      setPortfolioMuted(false)
     }
   }
 
-  const handleVideoEnd = (restarting) => {
-    slider.current.slickNext();
+  const handleVideoEnd = restarting => {
+    slider.current.slickNext()
 
     if (restarting) {
-      setPortfolioTriggered(false);
-      setPortfolioHasRestarted(true);
-      triggerButton.current.style.display = 'flex';
+      setPortfolioTriggered(false)
+      setPortfolioHasRestarted(true)
+      triggerButton.current.style.display = "flex"
       setTimeout(() => {
-        triggerButton.current.style.opacity = 1;
-      }, 400);
+        triggerButton.current.style.opacity = 1
+      }, 400)
     }
   }
 
@@ -129,11 +145,19 @@ const Portfolio = props => {
         <section
           className={`portfolio${
             portfolioTriggered ? " portfolio-active" : ""
-          }`}
+          }${portfolioLoaded ? " portfolio-loaded" : ""}`}
           id="portfolio"
         >
           <div className="wrapper">
             <div className="portfolio__carousel">
+              <div
+                className={`portfolio-loading-overlay${
+                  portfolioLoaded ? " hide" : ""
+                }`}
+              >
+                <Loader type="TailSpin" color="#1B83EA"></Loader>
+              </div>
+
               <Slider {...carouselSettings} ref={slider}>
                 {carouselVideos.map((video, i) => (
                   <CarouselVideo
@@ -146,10 +170,12 @@ const Portfolio = props => {
                     portfolioMuted={portfolioMuted}
                     setPortfolioMuted={setPortfolioMuted}
                     handleVideoEnd={handleVideoEnd}
+                    updateLoadedVideos={updateLoadedVideos}
+                    loadedVideos={loadedVideos}
                   />
                 ))}
               </Slider>
-              
+
               <button
                 className="portfolio__trigger-button"
                 onClick={triggerPortfolio}

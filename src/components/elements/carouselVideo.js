@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faPause, faVolumeUp, faVolumeMute, faExpand } from "@fortawesome/free-solid-svg-icons";
 
@@ -7,6 +8,7 @@ import { slugify } from '../../utilities/helper-functions';
 const CarouselVideo = props => {
   const video = useRef("");
 
+  const [videoIsLoaded, setVideoIsLoaded] = useState(false);
   const [videoIsTriggered, setVideoIsTriggered] = useState(false);
   const [videoIsPlaying, toggleVideoIsPlaying] = useState(false)
   const [screenIsSmall, setScreenIsSmall] = useState(window.innerWidth < 768);
@@ -34,6 +36,13 @@ const CarouselVideo = props => {
       }
     }
   }, [props.portfolioTriggered, props.isCurrent]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const updateVideoStatus = () => {
+    if (!videoIsLoaded) {
+      props.updateLoadedVideos([...props.loadedVideos, props.video.title])
+      setVideoIsLoaded(true);
+    }
+  }
 
   const playVideo = () => {
     if (props.portfolioMuted) {
@@ -102,6 +111,7 @@ const CarouselVideo = props => {
           playsInline
           width="100%"
           onEnded={videoEnded}
+          onCanPlayThrough={updateVideoStatus}
           id={slugify(props.video.title)}
           ref={video}
           poster={props.video.poster}

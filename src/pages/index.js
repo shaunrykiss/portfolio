@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { graphql } from 'gatsby';
 import { ParallaxProvider } from "react-scroll-parallax"
 import Layout from '../components/layout';
@@ -11,14 +11,20 @@ import Resume from '../components/sections/resume';
 import Contact from '../components/sections/contact';
 
 export default ({ data }) => {  
-  document.addEventListener("touchstart", function () {}, false);
+  window.addEventListener("touchstart", function () {}, false);
   
   const socialLinks = Object.values(
     data.allContentfulSocialMediaLinkLinkListJsonNode.edges[0].node
   );
   
+  const [loadingAnimationTrigger, setLoadingAnimationTrigger] = useState(false);
+
+  useLayoutEffect(() => {
+    setTimeout(() => setLoadingAnimationTrigger(true), 0);
+  }, []);
+  
   return (
-    <div id="home">
+    <div id="home" className={`home${loadingAnimationTrigger ? ' loaded' : ''}`}>
       <Layout
         socialLinks={socialLinks}
       >
