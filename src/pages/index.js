@@ -10,9 +10,7 @@ import Corporate from '../components/sections/corporate';
 import Resume from '../components/sections/resume';
 import Contact from '../components/sections/contact';
 
-export default ({ data }) => {  
-  window.addEventListener("touchstart", function () {}, false);
-  
+export default ({ data }) => {    
   const socialLinks = Object.values(
     data.allContentfulSocialMediaLinkLinkListJsonNode.edges[0].node
   );
@@ -21,6 +19,7 @@ export default ({ data }) => {
 
   useLayoutEffect(() => {
     setTimeout(() => setLoadingAnimationTrigger(true), 0);
+    document.addEventListener("touchstart", function () {}, false);
   }, []);
   
   return (
