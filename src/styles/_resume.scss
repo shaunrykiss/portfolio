@@ -85,6 +85,16 @@
 
       overflow-x: auto;
     }
+
+    li:last-of-type {
+      .resume__category-tab {
+        margin-right: 50px;
+
+        @include media-lg {
+          margin-right: 20px;
+        }
+      }
+    }
   }
 
   &__category-tab {

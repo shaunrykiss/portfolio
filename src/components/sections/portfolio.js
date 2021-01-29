@@ -177,7 +177,7 @@ const Portfolio = props => {
               </Slider>
 
               <button
-                className="portfolio__trigger-button"
+                className={`portfolio__trigger-button${portfolioLoaded ? ' show' : ''}`}
                 onClick={triggerPortfolio}
                 ref={triggerButton}
               >
