@@ -22,9 +22,9 @@ module.exports = {
       options: {
         google: {
           families: [
-            "Montserrat:700,800,300,500",
-            "Oswald:200,300,400,500",
-            "Raleway:200,300,500,600",
+            "Montserrat:300,500,700",
+            "Oswald:200,300,400",
+            "Raleway:300,500",
           ],
         },
       },
