@@ -41,6 +41,7 @@ const CarouselVideo = props => {
     if (!videoIsLoaded) {
       props.updateLoadedVideos([...props.loadedVideos, props.video.title])
       setVideoIsLoaded(true);
+      console.log(`${props.video.title} is loaded`);
     }
   }
 
