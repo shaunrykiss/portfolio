@@ -113,6 +113,7 @@ const CarouselVideo = props => {
           width="100%"
           onEnded={videoEnded}
           onCanPlayThrough={updateVideoStatus}
+          preload="auto"
           id={slugify(props.video.title)}
           ref={video}
           poster={props.video.poster}
