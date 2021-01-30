@@ -104,7 +104,6 @@ const Portfolio = props => {
       const allVideosLoaded = carouselVideos.every(video => loadedVideos.includes(video.title));
 
       if (allVideosLoaded) {
-        console.log('all videos are loaded');
         setPortfolioLoaded(true);
       }
     }

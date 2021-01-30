@@ -66,7 +66,7 @@ export default () => (
           edges {
             node {
               bioImage {
-                fluid(quality: 100, maxWidth: 300) {
+                fluid(quality: 45, maxWidth: 300) {
                   ...GatsbyContentfulFluid
                 }
               }
