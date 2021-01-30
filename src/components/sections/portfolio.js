@@ -92,9 +92,10 @@ const Portfolio = props => {
         videoUrl: video.node.video.file.url,
         title: video.node.title,
         description: video.node.description,
-        poster: video.node.posterImage.file.url,
+        poster: video.node.posterImage.fluid.src,
       })
     )
+          console.log("test", props.data.allContentfulHomepageCarouselVideo.edges[0].node.posterImage.fluid)
 
     setCarouselVideos(videos)
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
@@ -213,8 +214,8 @@ export default () => (
               title
               description
               posterImage {
-                file {
-                  url
+                fluid (quality: 30, maxWidth: 800) {
+                  ...GatsbyContentfulFluid_withWebp
                 }
               }
             }

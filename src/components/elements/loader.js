@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Loader = () => (
-  <div class="loader">
+  <div className="loader">
     <div></div>
     <div></div>
     <div></div>
