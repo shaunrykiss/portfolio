@@ -88,7 +88,7 @@ export default () => (
               logo {
                 title
                 fluid(quality: 100) {
-                  ...GatsbyContentfulFluid
+                  ...GatsbyContentfulFluid_withWebp
                 }
               }
             }
@@ -98,5 +98,5 @@ export default () => (
     `}
     render={data => <Corporate data={data} />}
   />
-);
+)
 

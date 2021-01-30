@@ -150,10 +150,7 @@ export default () => (
     query={graphql`
       query WorkItemsQuery {
         allContentfulWorkItem(
-          sort: {
-            order: [DESC, ASC]
-            fields: [order, title]
-          }
+          sort: { order: [DESC, ASC], fields: [order, title] }
         ) {
           edges {
             node {
@@ -164,8 +161,8 @@ export default () => (
               runningTime
               link
               image {
-                fluid (quality: 40, maxWidth: 500) {
-                  ...GatsbyContentfulFluid
+                fluid(quality: 40, maxWidth: 500) {
+                  ...GatsbyContentfulFluid_withWebp
                 }
               }
               genre

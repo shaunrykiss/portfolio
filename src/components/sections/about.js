@@ -67,7 +67,7 @@ export default () => (
             node {
               bioImage {
                 fluid(quality: 45, maxWidth: 300) {
-                  ...GatsbyContentfulFluid
+                  ...GatsbyContentfulFluid_withWebp
                 }
               }
               bioText {
