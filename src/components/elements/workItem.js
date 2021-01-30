@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 
-import ReactPlayer from 'react-player';
+import ReactPlayerYoutube from 'react-player/youtube';
+import ReactPlayerVimeo from 'react-player/vimeo';
 import Img from 'gatsby-image';
-import Loader from 'react-loader-spinner';
+import Loader from '../elements/loader';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
@@ -23,8 +24,20 @@ const WorkItem = props => {
   useEffect(() => {
     window.addEventListener('resize', () => setWindowWidth(window.innerWidth));
   }, []);
-  
-  const media = itemHasVideo ? <ReactPlayer width="100%" height={windowWidth > 1800 ? '720px' : '360px'} url={props.item.link} controls={true} onReady={() => hideLoader()}></ReactPlayer> : <Img fluid={props.item.image.fluid}></Img>
+
+  let media;
+
+  if (itemHasVideo) {
+    if (props.item.link.includes('youtube')) {
+      media = <ReactPlayerYoutube width="100%" height={windowWidth > 1800 ? '720px' : '360px'} url={props.item.link} controls={true} onReady={() => hideLoader()}></ReactPlayerYoutube>
+    }
+    
+    if (props.item.link.includes('vimeo')) {
+      media = <ReactPlayerVimeo width="100%" height={windowWidth > 1800 ? '720px' : '360px'} url={props.item.link} controls={true} onReady={() => hideLoader()}></ReactPlayerVimeo>
+    }
+  } else {
+    media = <Img fluid={props.item.image.fluid}></Img>;
+  }
 
   const hideLoader = () => {
     loader.current.style.opacity = 0;
@@ -35,7 +48,7 @@ const WorkItem = props => {
     <div className="work-item">
       {itemHasVideo && (
         <div className="work-item__loader-overlay" ref={loader}>
-          <Loader type="TailSpin" color="#1B83EA"></Loader>
+          <Loader></Loader>
         </div>
       )}
 

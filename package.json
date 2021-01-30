@@ -35,7 +35,6 @@
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
-    "react-loader-spinner": "^3.1.14",
     "react-player": "^2.7.2",
     "react-responsive-modal": "^6.0.1",
     "react-scroll-parallax": "^2.3.5",
@@ -47,6 +46,7 @@
     "typeface-raleway": "^1.1.13"
   },
   "devDependencies": {
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.20",
     "prettier": "2.1.2"
   },
   "repository": {

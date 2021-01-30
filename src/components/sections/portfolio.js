@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPlayCircle, faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
-import Loader from 'react-loader-spinner';
+import Loader from '../elements/loader';
 
 import { Controller, Scene } from 'react-scrollmagic';
 
@@ -155,7 +155,7 @@ const Portfolio = props => {
                   portfolioLoaded ? " hide" : ""
                 }`}
               >
-                <Loader type="TailSpin" color="#1B83EA"></Loader>
+                <Loader></Loader>
               </div>
 
               <Slider {...carouselSettings} ref={slider}>
