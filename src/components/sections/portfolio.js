@@ -15,7 +15,7 @@ import SlickButtonFix from '../elements/slickButtonFix';
 
 const Portfolio = props => {
   const carouselSettings = {
-    adaptiveHeight: false,
+    adaptiveHeight: true,
     arrows: true,
     cssEase: "ease-in-out",
     dots: false,
@@ -26,14 +26,6 @@ const Portfolio = props => {
     speed: 1000,
     swipe: false,
     touchMove: false,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          adaptiveHeight: true,
-        },
-      },
-    ],
     nextArrow: (
       <SlickButtonFix>
         <FontAwesomeIcon icon={faChevronRight}></FontAwesomeIcon>
@@ -56,16 +48,17 @@ const Portfolio = props => {
         }
       })
     },
-    afterChange: function (index) {
-      let siblings = document.querySelectorAll(".slick-slide")
-      let current = document.querySelector(".slick-current")
+    beforeChange: function (current, next) {
+      let siblings = document.querySelectorAll('.slick-slide');
+      let newCurrent = document.querySelector(`.slick-slide[data-index="${next}"]`);
 
       for (let i = 0; i < siblings.length; i++) {
-        siblings[i].style.zIndex = 0
+        siblings[i].style.zIndex = 0;
       }
-      current.style.zIndex = 10
 
-      updateCurrentSlide(index)
+      newCurrent.style.zIndex = 10;
+      
+      updateCurrentSlide(next);
     },
   }
 
@@ -94,8 +87,7 @@ const Portfolio = props => {
         description: video.node.description,
         poster: video.node.posterImage.fluid.src,
       })
-    )
-          console.log("test", props.data.allContentfulHomepageCarouselVideo.edges[0].node.posterImage.fluid)
+    );
 
     setCarouselVideos(videos)
   }, []) // eslint-disable-line react-hooks/exhaustive-deps

@@ -72,7 +72,7 @@ const CarouselVideo = props => {
     props.setPortfolioMuted(false);
   }
 
-  const togglePlayStatus = () => {    
+  const togglePlayStatus = () => {
     if (!videoIsPlaying) {
       playVideo();
     } else {
@@ -120,7 +120,7 @@ const CarouselVideo = props => {
           <track kind="captions" />
         </video>
 
-        {props.portfolioTriggered && 
+        {props.portfolioTriggered && (
           <button
             className={`carousel-video__play${videoIsTriggered ? " hide" : ""}`}
             onClick={triggerVideo}
@@ -128,7 +128,7 @@ const CarouselVideo = props => {
             <FontAwesomeIcon icon={faPlay}></FontAwesomeIcon>
             <span className="sr-only">Play Video</span>
           </button>
-        }
+        )}
       </div>
 
       <div
@@ -137,7 +137,10 @@ const CarouselVideo = props => {
         }`}
       >
         <div className="carousel-video__controls">
-          <button className="play-toggle" onClick={togglePlayStatus}>
+          <button
+            className="play-toggle"
+            onClick={togglePlayStatus}
+          >
             <FontAwesomeIcon
               icon={videoIsPlaying ? faPause : faPlay}
             ></FontAwesomeIcon>
@@ -147,7 +150,10 @@ const CarouselVideo = props => {
           </button>
 
           <div className="carousel-video__toggles">
-            <button className="mute-toggle" onClick={toggleMuteStatus}>
+            <button
+              className="mute-toggle"
+              onClick={toggleMuteStatus}
+            >
               <FontAwesomeIcon
                 icon={props.portfolioMuted ? faVolumeUp : faVolumeMute}
               ></FontAwesomeIcon>
