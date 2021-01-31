@@ -96,7 +96,8 @@ const CarouselVideo = props => {
   }
 
   const videoEnded = () => {
-    props.handleVideoEnd(props.lastSlide)
+    props.handleVideoEnd(props.lastSlide);
+    document.exitFullscreen();
   }
 
   return (

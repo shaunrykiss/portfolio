@@ -41,7 +41,7 @@ const WorkItem = props => {
 
   const hideLoader = () => {
     loader.current.style.opacity = 0;
-    loader.current.style.zIndex = -1;
+    loader.current.style.zIndex = 0;
   }
 
   return (
