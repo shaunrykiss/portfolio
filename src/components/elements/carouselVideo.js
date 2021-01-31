@@ -20,8 +20,9 @@ const CarouselVideo = props => {
     
     if (!props.isCurrent) {
       pauseVideo();
-      video.current.currentTime = 0;
       setVideoIsTriggered(false);
+
+      setTimeout(() => video.current.currentTime = 0, 600);
     }
 
     if (

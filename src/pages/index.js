@@ -26,7 +26,7 @@ export default ({ data }) => {
     <div id="home" className={`home${loadingAnimationTrigger ? ' loaded' : ''}`}>
       <Layout
         socialLinks={socialLinks}
-      >
+      > 
         <ParallaxProvider>
           <Portfolio></Portfolio>
           <About></About>

@@ -26,6 +26,14 @@ const Portfolio = props => {
     speed: 1000,
     swipe: false,
     touchMove: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          speed: 500
+        }
+      }
+    ],
     nextArrow: (
       <SlickButtonFix>
         <FontAwesomeIcon icon={faChevronRight}></FontAwesomeIcon>

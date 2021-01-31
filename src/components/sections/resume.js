@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useLayoutEffect } from "react"
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import { StaticQuery, graphql } from "gatsby";
 
 import { parallaxStyle, parallaxStyleResume } from '../../utilities/helper-functions';
-
 import { Parallax } from "react-scroll-parallax";
+
 import { Controller, Scene } from "react-scrollmagic";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,7 +11,7 @@ import { faFilePdf } from "@fortawesome/free-regular-svg-icons";
 
 import ResumeItem from '../elements/resumeItem';
 
-const Resume = props => {
+const Resume = props => {  
   const [resumeProps, setResumeProps] = useState({
     resumeSorted: {},
     resumeCategories: [],
@@ -33,7 +33,7 @@ const Resume = props => {
       if (window.innerWidth < 993) {
         setCategoriesAreScrolling(true);
       }
-    }) 
+    });
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   useLayoutEffect(() => {
@@ -107,7 +107,7 @@ const Resume = props => {
           <div className="wrapper">
             <Parallax
               className="parallax"
-              x={[80, -50]}
+              x={[70, -20]}
               styleOuter={categoriesAreScrolling ? parallaxStyleResume : parallaxStyle}
             >
               <div className="parallax-heading"></div>
@@ -184,7 +184,7 @@ const Resume = props => {
         </section>
       </Scene>
     </Controller>
-  );
+  )
 }
 
 export default () => (
