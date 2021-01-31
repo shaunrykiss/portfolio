@@ -2,7 +2,7 @@ import React, { useState, useEffect, useLayoutEffect } from "react";
 import { StaticQuery, graphql } from "gatsby";
 
 import { parallaxStyle, parallaxStyleResume } from '../../utilities/helper-functions';
-import { Parallax } from "react-scroll-parallax";
+import { Parallax, withController } from "react-scroll-parallax";
 
 import { Controller, Scene } from "react-scrollmagic";
 
@@ -24,11 +24,14 @@ const Resume = props => {
 
   const [categoriesAreScrolling, setCategoriesAreScrolling] = useState(false);
 
+  const { parallaxController } = props;
+
   useEffect(() => {
     sortResumeItems();
 
     window.addEventListener("resize", () => {
       getContainerHeight();
+      parallaxController.update();
 
       if (window.innerWidth < 993) {
         setCategoriesAreScrolling(true);
@@ -38,6 +41,7 @@ const Resume = props => {
 
   useLayoutEffect(() => {
     getContainerHeight();
+    setTimeout(() => parallaxController.update(), 100);
   }, [resumeProps, currentCategory]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const getContainerHeight = () => {    
@@ -187,6 +191,8 @@ const Resume = props => {
   )
 }
 
+const ResumeParallax = withController(Resume);
+
 export default () => (
   <StaticQuery
     query={graphql`
@@ -228,7 +234,7 @@ export default () => (
         }
       }
     `}
-    render={data => <Resume data={data} />}
+    render={data => <ResumeParallax data={data} />}
   />
 )
 
