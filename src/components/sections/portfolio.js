@@ -214,7 +214,7 @@ export default () => (
               title
               description
               posterImage {
-                fluid (quality: 30, maxWidth: 800) {
+                fluid (quality: 100, maxWidth: 800) {
                   ...GatsbyContentfulFluid_withWebp
                 }
               }

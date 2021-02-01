@@ -25,6 +25,12 @@
   }
 }
 
+@mixin media-md-portfolio {
+  @media (min-width: 800px) {
+    @content;
+  }
+}
+
 @mixin media-sm {
   @media (min-width: 576px) {
     @content;

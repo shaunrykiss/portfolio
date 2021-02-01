@@ -97,6 +97,14 @@ h4 {
   font-size: 370px;
   font-weight: 700;
   color: $accentFaded;
+
+  @include media-md {
+    font-size: 300px;
+  }
+
+  @include media-md-portfolio {
+    font-size: 370px;
+  }
 }
 
 .slick-slide:first-child {

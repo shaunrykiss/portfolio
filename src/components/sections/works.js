@@ -161,7 +161,7 @@ export default () => (
               runningTime
               link
               image {
-                fluid(quality: 40, maxWidth: 500) {
+                fluid(quality: 100, maxWidth: 500) {
                   ...GatsbyContentfulFluid_withWebp
                 }
               }

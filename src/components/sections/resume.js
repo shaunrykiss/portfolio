@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import { StaticQuery, graphql } from "gatsby";
 
-import { parallaxStyle, parallaxStyleResume } from '../../utilities/helper-functions';
+import { setParallaxRight } from '../../utilities/helper-functions';
 import { Parallax, withController } from "react-scroll-parallax";
 
 import { Controller, Scene } from "react-scrollmagic";
@@ -20,22 +20,48 @@ const Resume = props => {
 
   const [currentCategory, setCurrentCategory] = useState("")
 
-  const [containerHeight, setContainerHeight] = useState(0)
-
-  const [categoriesAreScrolling, setCategoriesAreScrolling] = useState(false);
+  const [containerHeight, setContainerHeight] = useState(0);
 
   const [firstLoad, setFirstLoad] = useState(true);
+
+  const [parallaxStyles, setParallaxStyles] = useState({
+    position: "absolute",
+    top: "45px",
+  })
 
   const { parallaxController } = props;
   
   useEffect(() => {
     sortResumeItems();
+
+    setParallaxStyles({
+      ...parallaxStyles,
+      right: setParallaxRight(window.innerWidth),
+    });
+
+    if (window.innerWidth < 993) {
+      setParallaxStyles({
+        ...parallaxStyles,
+        top: "165px",
+      })
+    }
     
     window.addEventListener("resize", () => {
       getContainerHeight();
 
+      const parallaxRight = setParallaxRight(window.innerWidth);
+      setParallaxStyles({ ...parallaxStyles, parallaxRight });
+
       if (window.innerWidth < 993) {
-        setCategoriesAreScrolling(true);
+        setParallaxStyles({
+          ...parallaxStyles,
+          top: "165px",
+        });
+      } else {
+        setParallaxStyles({
+          ...parallaxStyles,
+          top: "45px",
+        })
       }
     });
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
@@ -117,9 +143,7 @@ const Resume = props => {
             <Parallax
               className="parallax"
               x={[70, -20]}
-              styleOuter={
-                categoriesAreScrolling ? parallaxStyleResume : parallaxStyle
-              }
+              styleOuter={parallaxStyles}
             >
               <div className="parallax-heading"></div>
             </Parallax>
