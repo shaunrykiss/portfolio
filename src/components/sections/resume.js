@@ -24,14 +24,15 @@ const Resume = props => {
 
   const [categoriesAreScrolling, setCategoriesAreScrolling] = useState(false);
 
-  const { parallaxController } = props;
+  const [firstLoad, setFirstLoad] = useState(true);
 
+  const { parallaxController } = props;
+  
   useEffect(() => {
     sortResumeItems();
-
+    
     window.addEventListener("resize", () => {
       getContainerHeight();
-      parallaxController.update();
 
       if (window.innerWidth < 993) {
         setCategoriesAreScrolling(true);
@@ -41,7 +42,11 @@ const Resume = props => {
 
   useLayoutEffect(() => {
     getContainerHeight();
-    setTimeout(() => parallaxController.update(), 100);
+
+    if (firstLoad) {
+      setTimeout(() => parallaxController.update(), 0);
+      setFirstLoad(false);
+    }
   }, [resumeProps, currentCategory]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const getContainerHeight = () => {    
@@ -92,7 +97,7 @@ const Resume = props => {
   const handleTabClick = e => {
     const category = e.target.dataset.category
 
-    setCurrentCategory(category)
+    setCurrentCategory(category);
   }
 
   const resumeFile =
@@ -112,7 +117,9 @@ const Resume = props => {
             <Parallax
               className="parallax"
               x={[70, -20]}
-              styleOuter={categoriesAreScrolling ? parallaxStyleResume : parallaxStyle}
+              styleOuter={
+                categoriesAreScrolling ? parallaxStyleResume : parallaxStyle
+              }
             >
               <div className="parallax-heading"></div>
             </Parallax>
