@@ -93,7 +93,7 @@ const Portfolio = props => {
         videoUrl: video.node.video.file.url,
         title: video.node.title,
         description: video.node.description,
-        poster: video.node.posterImage.fluid.src,
+        poster: video.node.posterImage.file.url,
       })
     );
 
@@ -214,8 +214,8 @@ export default () => (
               title
               description
               posterImage {
-                fluid (quality: 100, maxWidth: 800) {
-                  ...GatsbyContentfulFluid_withWebp
+                file {
+                  url
                 }
               }
             }

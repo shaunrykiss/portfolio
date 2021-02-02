@@ -161,8 +161,8 @@ export default () => (
               runningTime
               link
               image {
-                fluid(quality: 100, maxWidth: 500) {
-                  ...GatsbyContentfulFluid_withWebp
+                fluid {
+                  ...GatsbyContentfulFluid
                 }
               }
               genre

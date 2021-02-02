@@ -18,7 +18,7 @@ const About = props => {
       ...parallaxStyles,
       right: setParallaxRight(window.innerWidth),
     });
-    
+
     window.addEventListener("resize", () => {
       const parallaxRight = setParallaxRight(window.innerWidth)
       setParallaxStyles({ ...parallaxStyles, parallaxRight })
@@ -85,7 +85,7 @@ export default () => (
             node {
               bioImage {
                 fluid(quality: 100, maxWidth: 300) {
-                  ...GatsbyContentfulFluid_withWebp
+                  ...GatsbyContentfulFluid
                 }
               }
               bioText {

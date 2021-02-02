@@ -88,7 +88,7 @@ export default () => (
               logo {
                 title
                 fluid(quality: 100) {
-                  ...GatsbyContentfulFluid_withWebp
+                  ...GatsbyContentfulFluid
                 }
               }
             }
