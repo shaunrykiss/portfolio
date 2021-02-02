@@ -52,7 +52,7 @@ const WorkItem = props => {
         </div>
       )}
 
-      {media}
+      <div className="work-item__media">{media}</div>
 
       <div className="work-item__content">
         <button className="work-item__close" onClick={props.closeModal}>

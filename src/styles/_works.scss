@@ -175,6 +175,10 @@
       @include media-md {
         width: calc(33.33% - 16px);
       }
+
+      .works__item-overlay {
+        padding: 0 10px;
+      }
     }
   }
 
@@ -192,8 +196,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    padding: 0 10px;
 
     background: radial-gradient(rgba(0,0,0, 0.9),rgba(0,0,0, 0.6));
     

@@ -38,10 +38,12 @@ const Works = props => {
     const items = Array.from(document.querySelectorAll('.works__item'))
     items.forEach(item => {
       item.classList.remove('active');
+      setTimeout(() => item.style.display = 'none', 300);
 
       if (current === 'all' || current === item.dataset.category) {
         setTimeout(() => {
           item.classList.add('active');
+          item.style.display = 'block';
         }, 300);
       }
     });
