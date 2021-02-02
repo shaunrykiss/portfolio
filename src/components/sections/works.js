@@ -161,7 +161,7 @@ export default () => (
               runningTime
               link
               image {
-                fluid {
+                fluid (quality: 100) {
                   ...GatsbyContentfulFluid
                 }
               }
