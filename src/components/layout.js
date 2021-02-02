@@ -7,6 +7,7 @@ import Footer from './sections/footer';
 import Maintenance from './sections/maintenance';
 
 import favicon from '../../static/favicon.png';
+import sitePreviewImage from '../../static/site-preview.png';
 
 const SiteContent = ({children, socialLinks}) => (
   <React.Fragment>
@@ -47,6 +48,16 @@ export default function Layout({ children, socialLinks }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link type="image/png" href={favicon} rel="icon" />
+        <meta property="og:title" content="Shaun Rykiss | Editor" />
+        <meta property="og:description" content="Portfolio" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.shaunrykiss.com/" />
+        <meta property="og:image" content={sitePreviewImage} />
+        <meta property="og:image:type" content="image/png" />
+        <meta name="twitter:card" content={sitePreviewImage} />
+        <meta name="twitter:site" content="Shaun Rykiss | Editor" />
+        <meta name="twitter:creator" content="@ShaunRykiss" />
+
         <title>{siteData.site.siteMetadata.title}</title>
       </Helmet>
 
