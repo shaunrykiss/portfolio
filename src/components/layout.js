@@ -48,7 +48,7 @@ export default function Layout({ children, socialLinks }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link type="image/png" href={favicon} rel="icon" />
-        <meta property="og:title" content="Shaun Rykiss | Editor" />
+        <meta property="og:title" content="Shaun Rykiss" />
         <meta property="og:description" content="Portfolio" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.shaunrykiss.com/" />
