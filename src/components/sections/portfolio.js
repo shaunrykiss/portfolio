@@ -11,12 +11,11 @@ import { Controller, Scene } from 'react-scrollmagic';
 import { StaticQuery, graphql } from 'gatsby';
 
 import CarouselVideo from '../elements/carouselVideo';
-import SlickButtonFix from '../elements/slickButtonFix';
 
 const Portfolio = props => {
   const carouselSettings = {
     adaptiveHeight: true,
-    arrows: true,
+    arrows: false,
     cssEase: "ease-in-out",
     dots: false,
     fade: true,
@@ -34,16 +33,6 @@ const Portfolio = props => {
         }
       }
     ],
-    nextArrow: (
-      <SlickButtonFix>
-        <FontAwesomeIcon icon={faChevronRight}></FontAwesomeIcon>
-      </SlickButtonFix>
-    ),
-    prevArrow: (
-      <SlickButtonFix>
-        <FontAwesomeIcon icon={faChevronLeft}></FontAwesomeIcon>
-      </SlickButtonFix>
-    ),
     onInit: function () {
       let siblings = document.querySelectorAll(".slick-slide")
 
@@ -119,11 +108,33 @@ const Portfolio = props => {
     } else {
       setPortfolioMuted(false)
     }
+
+    window.gtag('event', 'view_portfolio_clicked');
   }
 
-  const handleVideoEnd = restarting => {
-    slider.current.slickNext()
+  const handlePortfolioPrev = () => {
+    const current = document.querySelector('.slick-active').querySelector('video').dataset.title;
 
+    window.gtag('event', 'portfolio_prev_clicked', {
+      prev_clicked_on: current
+    });
+
+    slider.current.slickPrev();
+  }
+
+  const handlePortfolioNext = () => {
+    const current = document.querySelector(".slick-active").querySelector("video").dataset.title;
+
+    window.gtag('event', 'portfolio_next_clicked', {
+      next_clicked_on: current
+    });
+
+    slider.current.slickNext();
+  }
+
+  const handleVideoEnd = (restarting, title) => {
+    slider.current.slickNext();
+    
     if (restarting) {
       setPortfolioTriggered(false)
       setPortfolioHasRestarted(true)
@@ -132,6 +143,10 @@ const Portfolio = props => {
         triggerButton.current.style.opacity = 1
       }, 400)
     }
+
+    window.gtag('event', 'portfolio_video_ended', {
+      video_ended: title
+    })
   }
 
   return (
@@ -159,6 +174,22 @@ const Portfolio = props => {
                 <Loader></Loader>
               </div>
 
+              <div className="portfolio__controls">
+                <button 
+                  className="portfolio__arrow portfolio-prev"
+                  onClick={handlePortfolioPrev}
+                >
+                  <FontAwesomeIcon icon={faChevronLeft}></FontAwesomeIcon>
+                </button>
+
+                <button 
+                  className="portfolio__arrow portfolio-next"
+                  onClick={handlePortfolioNext}
+                >
+                  <FontAwesomeIcon icon={faChevronRight}></FontAwesomeIcon>
+                </button>
+              </div>
+
               <Slider {...carouselSettings} ref={slider}>
                 {carouselVideos.map((video, i) => (
                   <CarouselVideo
@@ -178,7 +209,9 @@ const Portfolio = props => {
               </Slider>
 
               <button
-                className={`portfolio__trigger-button${portfolioLoaded ? ' show' : ''}`}
+                className={`portfolio__trigger-button${
+                  portfolioLoaded ? " show" : ""
+                }`}
                 onClick={triggerPortfolio}
                 ref={triggerButton}
               >

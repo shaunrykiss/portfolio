@@ -47,13 +47,20 @@ const Works = props => {
         }, 300);
       }
     });
+
+    window.gtag('event', 'works_tab_clicked', {
+      work_tab: current
+    })
   }
 
   const handleItemClick = (e, item) => {
     e.preventDefault();
     setSelectedItem(item);
     setModalIsOpen(true);
-    document.getElementById("___gatsby").style.overflow = "hidden"
+    document.getElementById("___gatsby").style.overflow = "hidden";
+    window.gtag('event', 'work_item_clicked', {
+      work_item: item.title
+    })
   }
 
   const closeModal = () => {

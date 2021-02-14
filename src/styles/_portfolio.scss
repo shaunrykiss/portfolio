@@ -62,10 +62,18 @@
     @include media-md-portfolio {
       width: 90%;
       margin: 0 auto 134px auto;
+
+      @include media-height-md {
+        width: 75%;
+      }
     }
 
     @include media-xl {
       width: 100%;
+
+      @include media-height-md {
+        width: 50%;
+      }
     }
   }
 
@@ -153,9 +161,21 @@
     }
   }
 
-  .slick-prev,
-  .slick-next {
+  &__arrow {
     display: none !important;
+    position: absolute;
+
+    line-height: 0;
+
+    padding: 0;
+
+    transform: translate(0, -50%);
+
+    cursor: pointer;
+
+    border: none;
+    outline: none;
+    background: transparent;
     
     top: auto;
     bottom: 0;
@@ -192,7 +212,7 @@
     }
   }
 
-  .slick-prev {
+  .portfolio-prev {
     left: 12px;
 
     @include media-md-portfolio {
@@ -204,7 +224,7 @@
     }
   }
 
-  .slick-next {
+  .portfolio-next {
     right: 12px;
 
     @include media-md-portfolio {
@@ -270,8 +290,8 @@
   }
 
   &.portfolio-active {
-    .slick-prev,
-    .slick-next {
+    .portfolio-prev,
+    .portfolio-next {
       display: block !important;
     }
   }

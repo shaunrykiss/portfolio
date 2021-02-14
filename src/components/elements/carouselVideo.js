@@ -22,7 +22,7 @@ const CarouselVideo = props => {
       pauseVideo();
       setVideoIsTriggered(false);
 
-      setTimeout(() => video.current.currentTime = 0, 600);
+      setTimeout(() => video.current.currentTime = 0, 1000);
     }
 
     if (
@@ -76,8 +76,14 @@ const CarouselVideo = props => {
   const togglePlayStatus = () => {
     if (!videoIsPlaying) {
       playVideo();
+      window.gtag('event', 'portfolio_play_clicked', {
+        play_clicked_on: props.video.title
+      });
     } else {
       pauseVideo();
+      window.gtag("event", "portfolio_pause_clicked", {
+        pause_clicked_on: props.video.title,
+      });
     }
   }
 
@@ -96,8 +102,11 @@ const CarouselVideo = props => {
   }
 
   const videoEnded = () => {
-    props.handleVideoEnd(props.lastSlide);
-    document.exitFullscreen();
+    props.handleVideoEnd(props.lastSlide, props.video.title);
+    
+    if (document.fullscreen) {
+      document.exitFullscreen();
+    }
   }
 
   return (
@@ -117,6 +126,7 @@ const CarouselVideo = props => {
           id={slugify(props.video.title)}
           ref={video}
           poster={props.video.poster}
+          data-title={props.video.title}
         >
           <source src={props.video.videoUrl} />
           <track kind="captions" />

@@ -124,6 +124,10 @@ const Resume = props => {
     const category = e.target.dataset.category
 
     setCurrentCategory(category);
+
+    window.gtag('event', 'resume_tab_clicked', {
+      resume_tab: category
+    });
   }
 
   const resumeFile =
