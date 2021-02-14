@@ -59,6 +59,20 @@ export default function Layout({ children, socialLinks }) {
         <meta name="twitter:creator" content="@ShaunRykiss" />
 
         <title>{siteData.site.siteMetadata.title}</title>
+
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-385T4BE4G7"
+        ></script>
+        <script type="text/javascript">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-385T4BE4G7', { 'send_page_view': true });
+          `}
+        </script>
       </Helmet>
 
       {siteUnderMaintenance ? (
