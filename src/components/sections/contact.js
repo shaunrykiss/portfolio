@@ -1,18 +1,23 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 
-import { Modal } from "react-responsive-modal";
+import { Modal } from "react-responsive-modal"
 
-import { Controller, Scene } from "react-scrollmagic";
+import { Controller, Scene } from "react-scrollmagic"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt, faEnvelope, faPhone, faCaretRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+  faMapMarkerAlt,
+  faEnvelope,
+  faPhone,
+  faCaretRight,
+} from "@fortawesome/free-solid-svg-icons"
 
-import ContactForm from '../elements/contactForm';
-import SocialLinksList from '../elements/socialLinksList';
+import ContactForm from "../elements/contactForm"
+import SocialLinksList from "../elements/socialLinksList"
 
-const Contact = (props) => {
-  const [ formIsOpen, setFormIsOpen ] = useState(false);
-  
+const Contact = props => {
+  const [formIsOpen, setFormIsOpen] = useState(false)
+
   return (
     <Controller>
       <Scene
@@ -28,7 +33,7 @@ const Contact = (props) => {
               <h2 className="section-heading">Contact</h2>
 
               <ul className="contact__info">
-                <li className="contact__info-section">
+                {/* <li className="contact__info-section">
                   <FontAwesomeIcon icon={faMapMarkerAlt}></FontAwesomeIcon>
                   <p className="contact__info-point">Toronto, Canada</p>
                 </li>
@@ -50,6 +55,31 @@ const Contact = (props) => {
                     <FontAwesomeIcon icon={faPhone}></FontAwesomeIcon>
                     <span>416 464 2916</span>
                   </a>
+                </li> */}
+
+                <li className="contact__info-section">
+                  <a
+                    className="contact__info-point"
+                    href="mailto:cbainbridge@meridianartists.com"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
+                    <span>cbainbridge&#64;meridianartists&#46;com</span>
+                  </a>
+                </li>
+
+                <li className="contact__info-section first-on-mobile">
+                  <h4>Represented By</h4>
+                  <p className="contact__info-point">COURTENAY BAINBRIDGE</p>
+                  <p className="contact__info-point">Meridian Artists</p>
+                </li>
+
+                <li className="contact__info-section">
+                  <a className="contact__info-point" href="tel:4169612777">
+                    <FontAwesomeIcon icon={faPhone}></FontAwesomeIcon>
+                    <span>416 961 2777</span>
+                  </a>
                 </li>
               </ul>
 
@@ -61,7 +91,7 @@ const Contact = (props) => {
                 ></SocialLinksList>
               </div>
 
-              <div className="contact__form">
+              {/* <div className="contact__form">
                 <button
                   className="contact__form-trigger"
                   onClick={() => setFormIsOpen(true)}
@@ -71,7 +101,7 @@ const Contact = (props) => {
                     <FontAwesomeIcon icon={faCaretRight}></FontAwesomeIcon>
                   </div>
                 </button>
-              </div>
+              </div> */}
 
               <div className="contact__logo" aria-hidden="true">
                 <p>
@@ -99,4 +129,4 @@ const Contact = (props) => {
   )
 }
 
-export default Contact;
+export default Contact

@@ -35,6 +35,20 @@
     align-items: center;
     justify-content: center;
 
+    &.first-on-mobile {
+      order: -1;
+
+      @include media-md {
+        order: unset;
+      }
+    }
+
+    h4 {
+      font-family: $secondaryFont;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
     .svg-inline--fa {
       font-size: 2.4rem;
       margin-bottom: 12px;
@@ -45,15 +59,15 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      
+
       position: relative;
 
       span::after {
-        content: '';
+        content: "";
         position: absolute;
         left: 0;
         bottom: -4px;
-        
+
         height: 1px;
         width: 0px;
 
@@ -75,6 +89,11 @@
     font-weight: 300;
     font-size: 1.4rem;
     letter-spacing: 1.5px;
+
+    &:nth-child(3) {
+      font-style: italic;
+      margin-top: 0.35rem;
+    }
   }
 
   &__social {
@@ -93,7 +112,7 @@
   &__form-trigger {
     background: none;
     border: none;
-    
+
     &:hover {
       .contact__form-trigger-container::before {
         left: 100%;
@@ -108,13 +127,13 @@
   &__form-trigger-container {
     display: flex;
     align-items: center;
-    
+
     position: relative;
     left: -24px;
 
     span {
       padding-left: 30px;
-      
+
       font-family: $secondaryFont;
       text-transform: uppercase;
       font-size: 1.1rem;
@@ -123,7 +142,7 @@
     }
 
     &::before {
-      content: '';
+      content: "";
       display: block;
 
       position: relative;
@@ -153,7 +172,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     width: 100%;
     height: calc(100% - 64px);
 
@@ -172,7 +191,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: -1;
-    
+
     display: flex;
     justify-content: center;
 
